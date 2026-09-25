@@ -47,6 +47,9 @@ Contrato transversal asociado:
 | `anclora-azure-bay-landing` | Portfolio / Showcase | PARTIAL | PARTIAL | PARTIAL | PARTIAL | N/A | Footer/legales/cookies implementados 2026-05-17 en rama `development`; validación bloqueada por node_modules/eslint ausente | PARTIAL | Instalar dependencias y QA visual | 2026-05-17 |
 | `anclora-playa-viva-uniestate` | Portfolio / Showcase | PARTIAL | PARTIAL | PARTIAL | PARTIAL | N/A | Footer/legales/cookies implementados 2026-05-17 en rama `development`; validación bloqueada por node_modules/eslint ausente | PARTIAL | Instalar dependencias y QA visual | 2026-05-17 |
 
+> [!note] Regularización de tiers de logo (CHG-0014, registrado 2026-09-25)
+> `anclora-azure-bay-landing` y `anclora-portfolio` pasan a tier **Ultra Premium** (aplicaciones de muestra; logo dorado). `anclora-portfolio-showcase` hereda Ultra Premium de `anclora-portfolio`. Las showcases usan el logo de su aplicación de origen. Las evidencias fechadas anteriores de estas filas se conservan verbatim como registro histórico.
+
 ## Evidencia resumida por familia
 
 ### Entidad Matriz

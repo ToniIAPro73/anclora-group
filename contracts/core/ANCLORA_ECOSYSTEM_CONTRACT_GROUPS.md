@@ -71,6 +71,8 @@ Aplicaciones ultra premium:
 - `anclora-private-estates`
 - landing pública de `anclora-private-estates` (dark-only, ES/EN/DE)
 
+> **Regularización 2026-09-25 (CHG-0014):** `anclora-portfolio` y `anclora-azure-bay-landing` usan el logo **Ultra Premium** (aplicaciones de muestra); `anclora-portfolio-showcase` hereda Ultra Premium de `anclora-portfolio`; el resto de showcases heredan el logo de su aplicación de origen. La pertenencia a esta sección (tema y contrato de superficie) no cambia.
+
 Fuera de alcance en esta fase:
 - ninguno
 

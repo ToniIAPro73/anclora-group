@@ -103,6 +103,8 @@ Al modificar la identidad de una app existente:
 | Ultra Premium | `anclora-private-estates` | Oro pulido | Cardo + Inter + Fraunces | Marca de lujo inmobiliario. |
 | Portfolio | `anclora-portfolio`, `anclora-azure-bay-landing`, `anclora-playa-viva-uniestate` | Por proyecto | Por proyecto | Fuera de alcance de este contrato. |
 
+> **Actualización 2026-09-25 (CHG-0014) — logo común por tier.** Desde esta fecha todas las apps de un tier comparten un único logo; la columna "Borde de icono" queda sustituida por el tier de logo: Entidad Matriz → plata · SaaS (`anclora-tableextractor`, `anclora-clearsheet`, `anclora-purgedoc`) → cian · Ultra Premium (`anclora-private-estates`, `anclora-private-estates-landing`, `anclora-portfolio`, `anclora-azure-bay-landing`, `anclora-portfolio-showcase`) → oro · Premium → cobre rosado · Internal → teal. Las showcases usan el logo de su aplicación de origen. Especificación en `10-group/brand/ANCLORA_BRANDING_ICON_SYSTEM.md`.
+
 ## Regla de escalera visual
 
 ```

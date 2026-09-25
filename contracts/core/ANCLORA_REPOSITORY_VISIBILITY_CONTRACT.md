@@ -20,6 +20,7 @@ sin revisión previa.
 | `premium` | Privado; showcase público separado |
 | `ultra_premium` | Privado; solo la landing pública |
 | `portfolio_showcase` | Público |
+| `microsaas` | Público *(añadido 2026-09-25, CHG-0014: `anclora-tableextractor`, `anclora-clearsheet`, `anclora-purgedoc`)* |
 | `independent_product` | Público |
 | `labs` | Privado o archivado |
 
