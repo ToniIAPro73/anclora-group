@@ -150,4 +150,4 @@ Para cada app:
 1. identificar sus contratos aplicables
 2. validar las condiciones por ID
 3. registrar el estado en `CONTRACT_COMPLIANCE_MATRIX.md`
-4. si una condición cambia, registrarlo en `docs/cambios/CONTRACT_CHANGE_QUEUE.md`
+4. si una condición cambia, registrarlo en `00-governance/decisions/CONTRACT_CHANGE_QUEUE.md`

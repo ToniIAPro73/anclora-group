@@ -26,7 +26,7 @@ Este documento separa:
 
 ### Idioma y tema por aplicación
 - `anclora-advisor-ai`: `es/en` + toggle visible de idioma + toggle visible de tema.
-- `anclora-filestudio`: `es/en` documentado en README; requiere auditoría visual y de i18n por superficie Web/Desktop/Service.
+- `anclora-filestudio`: `es/en` documentado en README; QA Windows/Web final validó funcionalidad y smoke de superficies principales, pero la cobertura i18n completa sigue pendiente.
 - `anclora-nexus`: `es/en/de/ru` + selector visible de idioma + contrato dark actual gobernado.
 - `anclora-content-generator-ai`: `es/en` + toggle visible de idioma + toggle visible de tema.
 
@@ -111,11 +111,12 @@ Este documento separa:
 ## 3. anclora-filestudio
 
 ### Estado actual observado
-- Repo local revisado en `\\wsl.localhost\Ubuntu\home\toni\projects\anclora-fileStudio`.
+- Repo local revisado en `/home/toni/workspace/anclora/anclora-filestudio`.
 - Superficies documentadas: Web browser-local, Desktop PRO, Service API privada, Local Agent, SDK e integración Nexus.
 - README documenta interfaz `es/en`.
 - Usa Next.js, shadcn/ui, Tailwind y componentes UI propios.
 - La integración confirmada con Nexus delega identidad, permisos, consentimiento y routing en Nexus.
+- Cierre técnico/QA Windows final documentado el 2026-08-12: RC4 PASS, Web production operativa, portable Windows validado, branding canónico verificado, 47/47 PASS y remaining known QA risks: none.
 
 ### Contrato objetivo
 - Mantener comportamiento internal: claridad operativa, privacidad por defecto, permisos explícitos y UI densa/funcional.
@@ -123,17 +124,18 @@ Este documento separa:
 - Mantener límites visibles: no almacenamiento permanente, no validación legal de documentos, no subida en Web local.
 
 ### Gap
-- Gap alto de auditoría visual: no hay revisión pantalla por pantalla en bóveda.
+- Gap medio de auditoría visual: existe QA final funcional/Web/portable y verificación del asset canónico, pero no equivale a auditoría pantalla por pantalla de UX, accesibilidad ni responsive.
 - Gap medio de i18n: README declara `es/en`, pero falta verificar cobertura por superficie.
 - Gap alto de seguridad documental: falta cerrar retención, clasificación por sensibilidad y consumidores autorizados fuera de Nexus.
 - Gap medio en AI Act: OCR/background removal/extracción documental requieren confirmar si activan tarjeta IA propia.
 
 ### Qué habría que hacer
-1. Auditar Web, Desktop PRO, Local Agent y Service/API docs como superficies separadas.
-2. Confirmar contratos locales en `docs/standards/` del repo.
-3. Documentar owner, retención por clasificación y scopes por cliente.
-4. Verificar que Nexus implementa UI/admin para pairing, aprobación y routing.
-5. Decidir si fileStudio necesita AI System Card propia.
+1. Mantener el registro de cierre [[filestudio-final-remediation-qa-2026-08-12]] como evidencia de QA técnico final.
+2. Auditar Web, Desktop PRO, Local Agent y Service/API docs como superficies separadas para gobierno UX/i18n/accesibilidad.
+3. Confirmar contratos locales en `10-group/brand/` del repo.
+4. Documentar owner, retención por clasificación y scopes por cliente.
+5. Verificar que Nexus implementa UI/admin para pairing, aprobación y routing.
+6. Decidir si fileStudio necesita AI System Card propia.
 
 ### Prioridad
 - `P0`: retención, clasificación y seguridad documental.
@@ -188,7 +190,7 @@ Este documento separa:
 
 ### Fase 2
 - `anclora-nexus`: auditoría y alineación de modales.
-- `anclora-filestudio`: auditoría Web/Desktop/Local Agent/Service y revisión de seguridad.
+- `anclora-filestudio`: auditoría de gobierno UX/i18n/accesibilidad por superficie y revisión de seguridad/compliance fuera del alcance del QA Windows final.
 - `anclora-content-generator-ai`: alineación de `button/card/dialog`.
 
 ### Fase 3

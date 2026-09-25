@@ -19,11 +19,11 @@
     {
       "id": "ANCLORA_ECOSYSTEM_CONTRACT_GROUPS",
       "title": "Anclora Ecosystem Contract Groups",
-      "path": "contracts/core/ANCLORA_ECOSYSTEM_CONTRACT_GROUPS.md",
+      "path": "00-governance/contracts/core/ANCLORA_ECOSYSTEM_CONTRACT_GROUPS.md",
       "status": "active",
       "contract_type": "ecosystem_governance",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -66,7 +66,11 @@
         "anclora-design-system",
         "anclora-projects-infra",
         "anclora-template",
-        "anclora-groundsync"
+        "anclora-groundsync",
+        "anclora-tableextractor",
+        "anclora-clearsheet",
+        "anclora-purgedoc",
+        "anclora-group-landing"
       ],
       "propagation_targets": [
         "docs/standards/"
@@ -81,11 +85,11 @@
     {
       "id": "ANCLORA_INTERNAL_APP_CONTRACT",
       "title": "Anclora Internal App Contract",
-      "path": "contracts/core/ANCLORA_INTERNAL_APP_CONTRACT.md",
+      "path": "00-governance/contracts/core/ANCLORA_INTERNAL_APP_CONTRACT.md",
       "status": "active",
       "contract_type": "group_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -124,11 +128,11 @@
     {
       "id": "ANCLORA_PREMIUM_APP_CONTRACT",
       "title": "Anclora Premium App Contract",
-      "path": "contracts/core/ANCLORA_PREMIUM_APP_CONTRACT.md",
+      "path": "00-governance/contracts/core/ANCLORA_PREMIUM_APP_CONTRACT.md",
       "status": "active",
       "contract_type": "group_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -168,11 +172,11 @@
     {
       "id": "ANCLORA_ULTRA_PREMIUM_APP_CONTRACT",
       "title": "Anclora Ultra Premium App Contract",
-      "path": "contracts/core/ANCLORA_ULTRA_PREMIUM_APP_CONTRACT.md",
+      "path": "00-governance/contracts/core/ANCLORA_ULTRA_PREMIUM_APP_CONTRACT.md",
       "status": "active",
       "contract_type": "group_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -208,11 +212,11 @@
     {
       "id": "ANCLORA_PORTFOLIO_SHOWCASE_CONTRACT",
       "title": "Anclora Portfolio Showcase Contract",
-      "path": "contracts/core/ANCLORA_PORTFOLIO_SHOWCASE_CONTRACT.md",
+      "path": "00-governance/contracts/core/ANCLORA_PORTFOLIO_SHOWCASE_CONTRACT.md",
       "status": "active",
       "contract_type": "group_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -228,7 +232,15 @@
       "applies_to_repos": [
         "anclora-azure-bay-landing",
         "anclora-playa-viva-uniestate",
-        "anclora-portfolio"
+        "anclora-portfolio",
+        "anclora-portfolio-showcase",
+        "anclora-energyscan-showcase",
+        "anclora-syncxml-showcase",
+        "anclora-fiscal-showcase",
+        "anclora-advisor-ai-showcase",
+        "anclora-guesthub-showcase",
+        "anclora-shiftimport-showcase",
+        "anclora-group-landing"
       ],
       "propagation_targets": [
         "docs/standards/"
@@ -248,11 +260,11 @@
     {
       "id": "ANCLORA_BRANDING_MASTER_CONTRACT",
       "title": "Anclora Branding Master Contract",
-      "path": "contracts/core/ANCLORA_BRANDING_MASTER_CONTRACT.md",
+      "path": "00-governance/contracts/core/ANCLORA_BRANDING_MASTER_CONTRACT.md",
       "status": "active",
       "contract_type": "branding_governance",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -277,7 +289,11 @@
         "anclora-energyscan",
         "anclora-guesthub",
         "anclora-talent",
-        "anclora-private-estates"
+        "anclora-private-estates",
+        "anclora-tableextractor",
+        "anclora-clearsheet",
+        "anclora-purgedoc",
+        "anclora-group-landing"
       ],
       "propagation_targets": [
         "docs/standards/"
@@ -292,13 +308,218 @@
       "last_reviewed_at": "2026-04-20"
     },
     {
+      "id": "ANCLORA_BRANDING_ICON_SYSTEM",
+      "title": "Anclora Branding Icon System",
+      "path": "10-group/brand/ANCLORA_BRANDING_ICON_SYSTEM.md",
+      "status": "active",
+      "contract_type": "branding_annex",
+      "scope": "anclora_group",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
+      "inventory_collection": "repos",
+      "source_of_truth": [
+        "vault"
+      ],
+      "design_system_layers": [
+        "assets",
+        "foundations"
+      ],
+      "applies_to_repos": [
+        "anclora-group",
+        "anclora-advisor-ai",
+        "anclora-filestudio",
+        "anclora-nexus",
+        "anclora-content-generator-ai",
+        "anclora-impulso",
+        "anclora-command-center",
+        "anclora-synergi",
+        "anclora-data-lab",
+        "anclora-energyscan",
+        "anclora-guesthub",
+        "anclora-talent",
+        "anclora-private-estates",
+        "anclora-portfolio-showcase",
+        "anclora-energyscan-showcase",
+        "anclora-syncxml-showcase",
+        "anclora-fiscal-showcase",
+        "anclora-advisor-ai-showcase",
+        "anclora-guesthub-showcase",
+        "anclora-shiftimport-showcase",
+        "anclora-tableextractor",
+        "anclora-clearsheet",
+        "anclora-purgedoc",
+        "anclora-azure-bay-landing",
+        "anclora-portfolio",
+        "anclora-group-landing"
+      ],
+      "propagation_targets": [
+        "docs/standards/"
+      ],
+      "depends_on": [
+        "ANCLORA_BRANDING_MASTER_CONTRACT"
+      ],
+      "supersedes": [],
+      "independent_from": [
+        "independent_products"
+      ],
+      "last_reviewed_at": "2026-08-08"
+    },
+    {
+      "id": "ANCLORA_BRANDING_COLOR_TOKENS",
+      "title": "Anclora Branding Color Tokens",
+      "path": "10-group/brand/ANCLORA_BRANDING_COLOR_TOKENS.md",
+      "status": "active",
+      "contract_type": "branding_annex",
+      "scope": "anclora_group",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
+      "inventory_collection": "repos",
+      "source_of_truth": [
+        "vault"
+      ],
+      "design_system_layers": [
+        "tokens",
+        "themes"
+      ],
+      "applies_to_repos": [
+        "anclora-group",
+        "anclora-advisor-ai",
+        "anclora-filestudio",
+        "anclora-nexus",
+        "anclora-content-generator-ai",
+        "anclora-impulso",
+        "anclora-command-center",
+        "anclora-synergi",
+        "anclora-data-lab",
+        "anclora-energyscan",
+        "anclora-guesthub",
+        "anclora-talent",
+        "anclora-private-estates",
+        "anclora-tableextractor",
+        "anclora-clearsheet",
+        "anclora-purgedoc",
+        "anclora-group-landing"
+      ],
+      "propagation_targets": [
+        "docs/standards/"
+      ],
+      "depends_on": [
+        "ANCLORA_BRANDING_MASTER_CONTRACT"
+      ],
+      "supersedes": [],
+      "independent_from": [
+        "independent_products"
+      ],
+      "last_reviewed_at": "2026-08-08"
+    },
+    {
+      "id": "ANCLORA_BRANDING_TYPOGRAPHY",
+      "title": "Anclora Branding Typography",
+      "path": "10-group/brand/ANCLORA_BRANDING_TYPOGRAPHY.md",
+      "status": "active",
+      "contract_type": "branding_annex",
+      "scope": "anclora_group",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
+      "inventory_collection": "repos",
+      "source_of_truth": [
+        "vault"
+      ],
+      "design_system_layers": [
+        "tokens",
+        "foundations"
+      ],
+      "applies_to_repos": [
+        "anclora-group",
+        "anclora-advisor-ai",
+        "anclora-filestudio",
+        "anclora-nexus",
+        "anclora-content-generator-ai",
+        "anclora-impulso",
+        "anclora-command-center",
+        "anclora-synergi",
+        "anclora-data-lab",
+        "anclora-energyscan",
+        "anclora-guesthub",
+        "anclora-talent",
+        "anclora-private-estates",
+        "anclora-tableextractor",
+        "anclora-clearsheet",
+        "anclora-purgedoc",
+        "anclora-group-landing"
+      ],
+      "propagation_targets": [
+        "docs/standards/"
+      ],
+      "depends_on": [
+        "ANCLORA_BRANDING_MASTER_CONTRACT"
+      ],
+      "supersedes": [],
+      "independent_from": [
+        "independent_products"
+      ],
+      "last_reviewed_at": "2026-08-08"
+    },
+    {
+      "id": "ANCLORA_BRANDING_FAVICON_SPEC",
+      "title": "Anclora Branding Favicon Spec",
+      "path": "10-group/brand/ANCLORA_BRANDING_FAVICON_SPEC.md",
+      "status": "active",
+      "contract_type": "branding_annex",
+      "scope": "anclora_group",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
+      "inventory_collection": "repos",
+      "source_of_truth": [
+        "vault"
+      ],
+      "design_system_layers": [
+        "assets"
+      ],
+      "applies_to_repos": [
+        "anclora-group",
+        "anclora-advisor-ai",
+        "anclora-filestudio",
+        "anclora-nexus",
+        "anclora-content-generator-ai",
+        "anclora-impulso",
+        "anclora-command-center",
+        "anclora-synergi",
+        "anclora-data-lab",
+        "anclora-energyscan",
+        "anclora-guesthub",
+        "anclora-talent",
+        "anclora-private-estates",
+        "anclora-portfolio-showcase",
+        "anclora-energyscan-showcase",
+        "anclora-syncxml-showcase",
+        "anclora-fiscal-showcase",
+        "anclora-advisor-ai-showcase",
+        "anclora-guesthub-showcase",
+        "anclora-shiftimport-showcase",
+        "anclora-tableextractor",
+        "anclora-clearsheet",
+        "anclora-purgedoc",
+        "anclora-azure-bay-landing",
+        "anclora-portfolio",
+        "anclora-group-landing"
+      ],
+      "propagation_targets": [
+        "docs/standards/"
+      ],
+      "depends_on": [
+        "ANCLORA_BRANDING_MASTER_CONTRACT"
+      ],
+      "supersedes": [],
+      "independent_from": [
+        "independent_products"
+      ],
+      "last_reviewed_at": "2026-08-08"
+    },
+    {
       "id": "ANCLORA_GROUP_BRAND_IP_CONTRACT",
       "title": "Anclora Group Brand IP Contract",
-      "path": "contracts/core/ANCLORA_GROUP_BRAND_IP_CONTRACT.md",
+      "path": "00-governance/contracts/core/ANCLORA_GROUP_BRAND_IP_CONTRACT.md",
       "status": "active",
       "contract_type": "transversal_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault"
@@ -326,7 +547,8 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate"
+        "anclora-playa-viva-uniestate",
+        "anclora-group-landing"
       ],
       "propagation_targets": [
         "docs/standards/",
@@ -348,11 +570,11 @@
     {
       "id": "HERMES_COPY_CURATOR_CONTRACT",
       "title": "Hermes Copy Curator Contract",
-      "path": "contracts/logic/HERMES_COPY_CURATOR_CONTRACT.md",
+      "path": "00-governance/contracts/logic/HERMES_COPY_CURATOR_CONTRACT.md",
       "status": "active",
       "contract_type": "content_agent_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -386,11 +608,11 @@
     {
       "id": "UI_MOTION_CONTRACT",
       "title": "UI Motion Contract",
-      "path": "contracts/components/UI_MOTION_CONTRACT.md",
+      "path": "00-governance/contracts/components/UI_MOTION_CONTRACT.md",
       "status": "active",
       "contract_type": "transversal_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -417,7 +639,9 @@
         "anclora-private-estates",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate"
+        "anclora-playa-viva-uniestate",
+        "anclora-group-landing",
+        "anclora-group"
       ],
       "propagation_targets": [
         "docs/standards/"
@@ -434,11 +658,11 @@
     {
       "id": "MODAL_CONTRACT",
       "title": "Modal Contract",
-      "path": "contracts/components/MODAL_CONTRACT.md",
+      "path": "00-governance/contracts/components/MODAL_CONTRACT.md",
       "status": "active",
       "contract_type": "transversal_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -465,7 +689,9 @@
         "anclora-private-estates",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate"
+        "anclora-playa-viva-uniestate",
+        "anclora-group-landing",
+        "anclora-group"
       ],
       "propagation_targets": [
         "docs/standards/"
@@ -482,11 +708,11 @@
     {
       "id": "LOCALIZATION_CONTRACT",
       "title": "Localization Contract",
-      "path": "contracts/logic/LOCALIZATION_CONTRACT.md",
+      "path": "00-governance/contracts/logic/LOCALIZATION_CONTRACT.md",
       "status": "active",
       "contract_type": "transversal_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -512,7 +738,9 @@
         "anclora-private-estates",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate"
+        "anclora-playa-viva-uniestate",
+        "anclora-group-landing",
+        "anclora-group"
       ],
       "propagation_targets": [
         "docs/standards/"
@@ -529,11 +757,11 @@
     {
       "id": "INDEPENDENT_PUBLIC_UTILITY_APP_CONTRACT",
       "title": "Independent Public Utility App Contract",
-      "path": "contracts/core/INDEPENDENT_PUBLIC_UTILITY_APP_CONTRACT.md",
+      "path": "00-governance/contracts/core/INDEPENDENT_PUBLIC_UTILITY_APP_CONTRACT.md",
       "status": "active",
       "contract_type": "parallel_contract",
       "scope": "independent_products",
-      "inventory_path": "docs/governance/independent-products.json",
+      "inventory_path": "00-governance/registry/independent-products.json",
       "inventory_collection": "products",
       "source_of_truth": [
         "vault"
@@ -555,11 +783,11 @@
     {
       "id": "ANCLORA_AUTH_LOGIN_SCREEN_CONTRACT",
       "title": "Anclora Auth Login Screen Contract",
-      "path": "contracts/components/ANCLORA_AUTH_LOGIN_SCREEN_CONTRACT.md",
+      "path": "00-governance/contracts/components/ANCLORA_AUTH_LOGIN_SCREEN_CONTRACT.md",
       "status": "active",
       "contract_type": "component_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -585,11 +813,11 @@
     {
       "id": "ANCLORA_GLOBAL_PREFERENCES_TOGGLE_CONTRACT",
       "title": "Anclora Global Preferences Toggle Contract",
-      "path": "contracts/components/ANCLORA_GLOBAL_PREFERENCES_TOGGLE_CONTRACT.md",
+      "path": "00-governance/contracts/components/ANCLORA_GLOBAL_PREFERENCES_TOGGLE_CONTRACT.md",
       "status": "active",
       "contract_type": "component_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -615,11 +843,11 @@
     {
       "id": "ANCLORA_LANGUAGE_TOGGLE_CONTRACT",
       "title": "Anclora Language Toggle Contract",
-      "path": "contracts/components/ANCLORA_LANGUAGE_TOGGLE_CONTRACT.md",
+      "path": "00-governance/contracts/components/ANCLORA_LANGUAGE_TOGGLE_CONTRACT.md",
       "status": "active",
       "contract_type": "component_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -645,11 +873,11 @@
     {
       "id": "ANCLORA_BRAND_IDENTITY_AND_SEO_GEO_CONTRACT",
       "title": "Anclora Brand Identity and SEO/GEO/AEO Contract",
-      "path": "contracts/core/ANCLORA_BRAND_IDENTITY_AND_SEO_GEO_CONTRACT.md",
+      "path": "00-governance/contracts/core/ANCLORA_BRAND_IDENTITY_AND_SEO_GEO_CONTRACT.md",
       "status": "active",
       "contract_type": "brand_content_positioning_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault"
@@ -702,11 +930,11 @@
     {
       "id": "ANCLORA_TEXT_QUALITY_CONTRACT",
       "title": "Anclora Text Quality Contract",
-      "path": "contracts/logic/ANCLORA_TEXT_QUALITY_CONTRACT.md",
+      "path": "00-governance/contracts/logic/ANCLORA_TEXT_QUALITY_CONTRACT.md",
       "status": "active",
       "contract_type": "text_quality_gate_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault",
@@ -764,11 +992,11 @@
     {
       "id": "ANCLORA_AI_ACT_COMPLIANCE_BASELINE",
       "title": "Anclora AI Act Compliance Baseline",
-      "path": "contracts/core/ANCLORA_AI_ACT_COMPLIANCE_BASELINE.md",
+      "path": "00-governance/contracts/core/ANCLORA_AI_ACT_COMPLIANCE_BASELINE.md",
       "status": "active",
       "contract_type": "ai_compliance_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault"
@@ -816,11 +1044,11 @@
     {
       "id": "ANCLORA_AI_RISK_CLASSIFICATION_MATRIX",
       "title": "Anclora AI Risk Classification Matrix",
-      "path": "contracts/core/ANCLORA_AI_RISK_CLASSIFICATION_MATRIX.md",
+      "path": "00-governance/contracts/core/ANCLORA_AI_RISK_CLASSIFICATION_MATRIX.md",
       "status": "active",
       "contract_type": "ai_compliance_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault"
@@ -868,11 +1096,11 @@
     {
       "id": "ANCLORA_AI_HUMAN_OVERSIGHT_POLICY",
       "title": "Anclora AI Human Oversight Policy",
-      "path": "contracts/core/ANCLORA_AI_HUMAN_OVERSIGHT_POLICY.md",
+      "path": "00-governance/contracts/core/ANCLORA_AI_HUMAN_OVERSIGHT_POLICY.md",
       "status": "active",
       "contract_type": "ai_compliance_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault"
@@ -920,11 +1148,11 @@
     {
       "id": "ANCLORA_AI_TRANSPARENCY_AND_DISCLOSURE_RULES",
       "title": "Anclora AI Transparency and Disclosure Rules",
-      "path": "contracts/core/ANCLORA_AI_TRANSPARENCY_AND_DISCLOSURE_RULES.md",
+      "path": "00-governance/contracts/core/ANCLORA_AI_TRANSPARENCY_AND_DISCLOSURE_RULES.md",
       "status": "active",
       "contract_type": "ai_compliance_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault"
@@ -972,11 +1200,11 @@
     {
       "id": "ANCLORA_MODEL_PROVIDER_REGISTER",
       "title": "Anclora Model Provider Register",
-      "path": "contracts/core/ANCLORA_MODEL_PROVIDER_REGISTER.md",
+      "path": "00-governance/contracts/core/ANCLORA_MODEL_PROVIDER_REGISTER.md",
       "status": "active",
       "contract_type": "ai_compliance_contract",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault"
@@ -1024,11 +1252,11 @@
     {
       "id": "ANCLORA_REPOSITORY_VISIBILITY_CONTRACT",
       "title": "Anclora Repository Visibility Contract",
-      "path": "contracts/core/ANCLORA_REPOSITORY_VISIBILITY_CONTRACT.md",
+      "path": "00-governance/contracts/core/ANCLORA_REPOSITORY_VISIBILITY_CONTRACT.md",
       "status": "active",
       "contract_type": "ecosystem_governance",
       "scope": "anclora_group",
-      "inventory_path": "docs/governance/ecosystem-repos.json",
+      "inventory_path": "00-governance/registry/ecosystem-repos.json",
       "inventory_collection": "repos",
       "source_of_truth": [
         "vault"
@@ -1043,6 +1271,7 @@
         "anclora-content-generator-ai",
         "anclora-filestudio",
         "anclora-fiscal",
+        "anclora-flow",
         "anclora-nexus",
         "anclora-visionflow",
         "anclora-command-center",
@@ -1065,7 +1294,24 @@
         "anclora-design-system",
         "anclora-projects-infra",
         "anclora-template",
-        "anclora-groundsync"
+        "anclora-governance",
+        "anclora-infrastructure",
+        "anclora-groundsync",
+        "anclora-portfolio-showcase",
+        "anclora-energyscan-showcase",
+        "anclora-syncxml-showcase",
+        "anclora-fiscal-showcase",
+        "anclora-calculadora-fiscal-183",
+        "calculadora-fiscal-183",
+        "anclora-insights-adn",
+        "anclora-shiftimport",
+        "anclora-group-landing",
+        "anclora-tableextractor",
+        "anclora-clearsheet",
+        "anclora-purgedoc",
+        "anclora-advisor-ai-showcase",
+        "anclora-guesthub-showcase",
+        "anclora-shiftimport-showcase"
       ],
       "propagation_targets": [
         "docs/standards/"
@@ -1076,7 +1322,7 @@
       ],
       "supersedes": [],
       "independent_from": [],
-      "last_reviewed_at": "2026-07-24"
+      "last_reviewed_at": "2026-07-25"
     }
   ]
 }

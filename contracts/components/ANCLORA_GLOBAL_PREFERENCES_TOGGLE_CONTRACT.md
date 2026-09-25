@@ -8,7 +8,7 @@ Contrato superior de Anclora Group para gobernar preferencias globales visibles:
 - unidades de medida
 - tema claro/oscuro/sistema
 
-Este contrato prevalece sobre contratos anteriores cuando haya conflicto. `ANCLORA_LANGUAGE_TOGGLE_CONTRACT.md` conserva la lista de idiomas y `contracts/logic/LOCALIZATION_CONTRACT.md` gobierna la calidad editorial de cada locale activo.
+Este contrato prevalece sobre contratos anteriores cuando haya conflicto. `ANCLORA_LANGUAGE_TOGGLE_CONTRACT.md` conserva la lista de idiomas y `00-governance/contracts/logic/LOCALIZATION_CONTRACT.md` gobierna la calidad editorial de cada locale activo.
 
 ## Familias de controles
 Las apps deben separar dos familias:

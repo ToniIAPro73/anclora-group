@@ -6,7 +6,29 @@ Este contrato define la arquitectura operativa conocida del ecosistema Anclora G
 
 Todo agente IA que trabaje sobre repos Anclora debe consultar este contrato antes de tomar decisiones de arquitectura, despliegue, ramas, variables de entorno, bases de datos o integración entre productos.
 
-## 2. Reglas globales
+## 2. Arquitectura de capas (actualización FASE 2, 2026-08)
+
+El ecosistema se organiza en capas (decisión D-3, actualizada por el cutover de gobernanza
+2026-08). La documentación antigua que usaba "AOS" o "Knowledge layer" para referirse al repo
+`anclora-knowledge` (renombrado a `anclora-governance`) está obsoleta:
+
+| Capa | Repo / concepto | Rol |
+| :--- | :--- | :--- |
+| **AOS** | `anclora-infrastructure` (aos-runtime) | Anclora Operating System — source of truth operacional/runtime |
+| **anclora-vault** | `anclora-vault` | Source of truth documental (este contrato vive aquí, `00-governance/contracts/core/`) |
+| **anclora-governance** | `anclora-governance` | Constitución, estándares, decisiones maestras — autoridad constitucional (NO es "AOS", NO es el Knowledge layer) |
+| **Anclora Knowledge** | `anclora-infrastructure/knowledge` | Capa de conocimiento normalizado derivada |
+| **AKG** | grafo derivado | Deriva de Vault + AOS + GitHub + Governance (construcción en FASE 3+, no en este contrato) |
+
+Reglas de la capa documental:
+- La vault documenta; AOS consume; Knowledge/AKG derivan.
+- Los registries JSON de `00-governance/registry/` son la verdad máquina de repos/contratos.
+- **Command Center** (HOLD) se concibe como consumidor/interfaz futura sobre la operativa del
+  ecosistema, no como fuente de verdad.
+- Los estados de producto (`ACTIVE/HOLD/LEGACY/DEPRECATED`) viven en frontmatter de cada dossier
+  y en el portfolio audit (`10-group/corporate/portfolio/`).
+
+## 3. Reglas globales
 
 - No asumir que todos los productos comparten infraestructura.
 - No asumir que Vercel cubre frontend y backend de todas las apps.
@@ -19,7 +41,7 @@ Todo agente IA que trabaje sobre repos Anclora debe consultar este contrato ante
 - No tocar secretos ni credenciales reales.
 - No promocionar `development → staging → production` sin revisar frontend, backend, base de datos, auth y variables.
 
-## 3. Workflow Git global
+## 4. Workflow Git global
 
 Ramas permanentes recomendadas:
 
@@ -42,14 +64,15 @@ Reglas:
 - No usar `git push --force`.
 - No borrar ramas remotas sin verificar que están mergeadas o archivadas.
 
-## 4. Matriz de aplicaciones
+## 5. Matriz de aplicaciones
 
 | Producto | Rol | Repo | Frontend | Backend | Datos/Auth |
 |---|---|---|---|---|---|
 | Anclora Nexus | Router/CRM/operativa ecosistema | `anclora-nexus` | Vercel `/frontend` | Render `/backend` | Supabase |
-| Anclora GuestHub | Piloto SES.HOSPEDAJES / XML viajeros | `anclora-guesthub` | Vercel | Según repo/config | DB operativa del producto |
+| Anclora GuestHub | Gestión de huéspedes y alquiler vacacional (capacidad SES.HOSPEDAJES / XML viajeros) | `anclora-guesthub` | Vercel | Según repo/config | DB operativa del producto |
 | Anclora Content Generator AI | Worker/Hermes/copy/SEO-GEO | `anclora-content-generator-ai` | Vercel/worker | Vercel worker | Variables propias |
 | Anclora EnergyScan | Análisis PDFs energía | `anclora-energyscan` | Por confirmar | Por confirmar | Por confirmar |
+| Anclora FileStudio | App de escritorio de gestión documental/archivos | `anclora-filestudio` | App local (runtime Chromium) | Local por confirmar | Local por confirmar |
 | Anclora Data Lab | Data/productividad | `anclora-data-lab` | Por confirmar | Por confirmar | Por confirmar |
 | Anclora Synergi | Producto separado | `anclora-synergi` | Por confirmar | Por confirmar | Por confirmar |
 | Anclora Private Estates | Real estate premium | `anclora-private-estates` | Vercel probable | Por confirmar | Por confirmar |
@@ -59,10 +82,12 @@ Reglas:
 | Anclora Talent | Producto separado | `anclora-talent` | Por confirmar | Por confirmar | Por confirmar |
 | Anclora Impulso | Producto separado | `anclora-impulso` | Por confirmar | Por confirmar | Por confirmar |
 | Anclora Linguo Cam | Videollamadas con traduccion en tiempo real | `anclora-linguo-cam` | Vercel probable | Servicios auxiliares por confirmar | Variables propias |
+| Anclora Command Center | Consumidor/interfaz futura de la operativa | `anclora-command-center` | Por confirmar | Por confirmar | Por confirmar |
 
-No inventar certezas: usar “por confirmar” donde no haya evidencia local o contractual confirmada.
+No inventar certezas: usar "por confirmar" donde no haya evidencia local o contractual confirmada.
+Estados de producto según portfolio audit 2026-08 (`10-group/corporate/portfolio/`).
 
-## 5. Anclora Nexus
+## 6. Anclora Nexus
 
 ### Arquitectura conocida
 
@@ -111,8 +136,6 @@ GUESTHUB_PILOT_AUTO_APPROVE=false
 USE_SYNTHETIC_DATA_ONLY=true
 ```
 
-Nota de transición (rename 2026-08, SyncXML → GuestHub): los nombres legacy `SYNCXML_ENV` y `SYNCXML_PILOT_AUTO_APPROVE` siguen soportados durante la transición; los nombres `GUESTHUB_*` son los preferidos.
-
 ### Regla operativa
 
 Antes de promocionar Nexus a `staging` o `production`, revisar:
@@ -125,9 +148,11 @@ Antes de promocionar Nexus a `staging` o `production`, revisar:
 6. Datos sintéticos o reales.
 7. Riesgo de escrituras sobre datos compartidos.
 
-## 6. Anclora GuestHub
+## 7. Anclora GuestHub
 
-- Producto centrado en piloto controlado para SES.HOSPEDAJES/XML viajeros.
+> Renombrado de Anclora SyncXML (2026-08). Las variables `SYNCXML_*` (`SYNCXML_ENV`, `SYNCXML_PILOT_AUTO_APPROVE`) permanecen soportadas como **fallback legacy** durante la transición de alias; los nombres canónicos nuevos son `GUESTHUB_*`.
+
+- Producto de gestión de huéspedes, check-in y operación de alquiler vacacional (Real Estate); incluye la capacidad SES.HOSPEDAJES/XML viajeros en piloto controlado.
 - Landing pública orientada a solicitud de piloto controlado.
 - No debe exponerse login público salvo decisión explícita.
 - Flujo piloto relacionado con Nexus y Hermes.
@@ -136,7 +161,7 @@ Antes de promocionar Nexus a `staging` o `production`, revisar:
 - El entorno staging/preview debe estar separado de producción siempre que sea posible.
 - No prometer cumplimiento legal garantizado.
 
-## 7. Anclora Content Generator AI / Hermes
+## 8. Anclora Content Generator AI / Hermes
 
 - Repo relacionado con worker Hermes y validaciones de copy/SEO-GEO.
 - Puede participar en validación de solicitudes GuestHub.
@@ -145,18 +170,27 @@ Antes de promocionar Nexus a `staging` o `production`, revisar:
 - No copiar claves de producción a preview.
 - No asumir que Hermes antiguo y nuevo son equivalentes sin revisar integración.
 
-## 8. Anclora EnergyScan
+## 9. Anclora EnergyScan
 
 - Producto orientado a análisis de presupuestos energéticos y certificados energéticos.
 - MinerU tiene sentido potencial para parsing avanzado de PDFs.
 - No usar Docker si el entorno corporativo de Toni lo impide.
 - Antes de integrar MinerU revisar parsers existentes y beneficio real.
 
-## 9. Productos con arquitectura pendiente de confirmar o detallar
+## 10. Anclora FileStudio
+
+- App de escritorio de gestión documental (ACTIVE, evidence en `20-products/filestudio/`).
+- Empaquetado con runtime Chromium local (Chrome for Testing); en Ubuntu requiere `--no-sandbox`
+  (AppArmor bloquea userns no privilegiado).
+- Detalles de backend/persistencia: por confirmar en dossier de producto.
+- La auditoría técnica 2026-08-09 vive en `20-products/filestudio/evidence/`.
+
+## 11. Productos con arquitectura pendiente de confirmar o detallar
 
 ### Anclora Data Lab
 
-- Arquitectura pendiente de confirmar.
+- Arquitectura pendiente de confirmar (frontend/backend/hosting).
+- Auth (2026-09-12, ver `anclora-governance` D-2026-0037/D-2026-0038/D-2026-0040): piloto de `anclora-identity` (OIDC vía `node-oidc-provider`, propietario de la identidad transversal del ecosistema) integrado como relying party detrás del flag `ANCLORA_IDENTITY_ENABLED` (fail-closed; desactivado por defecto, la auth legacy en `src/lib/datalab-auth.ts` sigue intacta). No desplegado a ningún entorno; solo local. Base de datos de Data Lab en sí sigue siendo Neon directo (`@neondatabase/serverless`), sin cambios.
 
 ### Anclora Synergi
 
@@ -190,7 +224,11 @@ Antes de promocionar Nexus a `staging` o `production`, revisar:
 
 - Producto confirmado; arquitectura detallada y despliegue final pendientes de confirmar.
 
-## 10. Reglas para agentes IA
+### Anclora Command Center
+
+- Producto HOLD; rol de consumidor/interfaz futura; arquitectura pendiente de confirmar.
+
+## 12. Reglas para agentes IA
 
 Antes de tocar cualquier repo Anclora, el agente debe:
 
@@ -202,14 +240,15 @@ Antes de tocar cualquier repo Anclora, el agente debe:
 6. Comprobar rama actual.
 7. Comprobar infraestructura real del producto.
 8. No asumir que una solución válida para un repo aplica a otro.
+9. Consultar la vault documental (`anclora-vault`) para contratos, censo de repos (registry JSON) y decisiones (CHG).
 
-## 11. Token Reduction Architecture
+## 13. Token Reduction Architecture
 
 El ecosistema adopta una capa de enrutamiento inteligente de modelos para reducir el coste de
 tokens un 80-90%. Esta arquitectura aplica a todos los workers del ecosistema (agency-agents,
 Hermes, Codex/Claude Code).
 
-**Documento canónico**: [docs/sistemas/token-reduction.md](../../docs/sistemas/token-reduction.md)
+**Documento canónico**: [token-reduction](../../../30-technology/infrastructure/token-reduction.md)
 
 Principios:
 
@@ -221,11 +260,11 @@ Principios:
 
 ---
 
-## 12. Mantenimiento
+## 14. Mantenimiento
 
 - Propietario: Toni.
 - Tipo: contrato canónico estable.
 - No incluir secretos.
 - No incluir logs temporales.
 - Actualizar cuando cambie arquitectura real de una app.
-- Referenciado por `.anclora-agents/ANCLORA_ECOSYSTEM_CONTEXT.md`.
+- Referenciado por `.anclora-agents/ANCLORA_ECOSYSTEM_CONTEXT.md` en repos de producto.
