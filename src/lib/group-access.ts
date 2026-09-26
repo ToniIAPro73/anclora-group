@@ -31,6 +31,29 @@ export type GroupBusinessArea =
   | 'utilities'
   | 'personal'
 
+export type GroupStrategicLineId =
+  | 'fiscal-compliance'
+  | 'operational-automation'
+  | 'energy-efficiency'
+  | 'real-estate-intelligence'
+  | 'publishing-digital-knowledge'
+  | 'secureflow'
+
+export type GroupStrategicLine = {
+  key: GroupStrategicLineId
+  name: string
+  description: string
+}
+
+const STRATEGIC_LINES: readonly GroupStrategicLine[] = [
+  { key: 'fiscal-compliance', name: 'Fiscalidad y Cumplimiento', description: 'Fiscalidad, facturación y cumplimiento.' },
+  { key: 'operational-automation', name: 'Automatización Operativa', description: 'Automatización documental y operativa.' },
+  { key: 'energy-efficiency', name: 'Energía y Eficiencia', description: 'Eficiencia energética y análisis.' },
+  { key: 'real-estate-intelligence', name: 'Inteligencia Inmobiliaria', description: 'Inteligencia inmobiliaria y activos premium.' },
+  { key: 'publishing-digital-knowledge', name: 'Contenido e IA', description: 'Investigación, creación y publicación de contenido digital.' },
+  { key: 'secureflow', name: 'SecureFlow', description: 'Flujo seguro de información desde el archivo original hasta el dato listo para usar.' },
+]
+
 export type GroupArchitectureLayer = 'entry' | 'core' | 'activation'
 
 export type GroupAppKey =
@@ -49,6 +72,9 @@ export type GroupAppKey =
   | 'guesthub'
   | 'energyscan'
   | 'filestudio'
+  | 'purgedoc'
+  | 'tableextract'
+  | 'cleansheet'
   | 'visionflow'
   | 'linguo-cam'
 
@@ -84,6 +110,7 @@ export type GroupAppDefinition = {
   url: string
   /** Defaults to 'active' when omitted — see GroupAppStatus. */
   status?: GroupAppStatus
+  lineId?: GroupStrategicLineId
 }
 
 export type GroupUserRecord = {
@@ -196,6 +223,9 @@ const APP_TAXONOMY: Record<GroupAppKey, Pick<GroupAppDefinition, 'businessArea' 
   // per the existing architecture — not moved automatically (see the
   // editorial-branch integration report for the explicit decision record).
   filestudio: { businessArea: 'utilities', architectureLayer: 'core' },
+  purgedoc: { businessArea: 'utilities', architectureLayer: 'core' },
+  tableextract: { businessArea: 'intelligence-data', architectureLayer: 'core' },
+  cleansheet: { businessArea: 'utilities', architectureLayer: 'core' },
   'content-generator-ai': { businessArea: 'content-ai', architectureLayer: 'activation' },
   'insights-adn': { businessArea: 'content-ai', architectureLayer: 'activation' },
   talent: { businessArea: 'content-ai', architectureLayer: 'activation' },
@@ -214,6 +244,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
   const apps: GroupAppDefinitionBase[] = [
     {
       key: 'private-estates',
+      lineId: 'real-estate-intelligence',
       title: 'Anclora Private Estates',
       eyebrow: 'Real estate de lujo',
       description:
@@ -226,6 +257,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'private-estates-landing',
+      lineId: 'real-estate-intelligence',
       title: 'Anclora Private Estates Landing Page',
       eyebrow: 'Landing ultra premium',
       description:
@@ -241,6 +273,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'synergi',
+      lineId: 'real-estate-intelligence',
       title: 'Anclora Synergi',
       eyebrow: 'Plataforma de partnership',
       description:
@@ -253,6 +286,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'data-lab',
+      lineId: 'real-estate-intelligence',
       title: 'Anclora Data Lab',
       eyebrow: 'Plataforma de inteligencia',
       description:
@@ -265,6 +299,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'nexus',
+      lineId: 'operational-automation',
       title: 'Anclora Nexus',
       eyebrow: 'Operación Private Estates',
       description:
@@ -277,6 +312,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'command-center',
+      lineId: 'operational-automation',
       title: 'Anclora Command Center',
       eyebrow: 'Centro de mando',
       description:
@@ -289,6 +325,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'content-generator-ai',
+      lineId: 'publishing-digital-knowledge',
       title: 'Anclora Content Generator AI',
       eyebrow: 'Motor editorial con IA',
       description:
@@ -301,6 +338,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'insights-adn',
+      lineId: 'publishing-digital-knowledge',
       title: 'Anclora Insights ADN',
       eyebrow: 'Sello editorial',
       description:
@@ -313,6 +351,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'talent',
+      lineId: 'publishing-digital-knowledge',
       title: 'Anclora Talent',
       eyebrow: 'Plataforma editorial',
       description:
@@ -326,6 +365,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'advisor-ai',
+      lineId: 'fiscal-compliance',
       title: 'Anclora Advisor AI',
       eyebrow: 'Asesoría con IA',
       description:
@@ -338,6 +378,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'fiscal',
+      lineId: 'fiscal-compliance',
       title: 'Anclora Fiscal',
       eyebrow: 'Operación fiscal',
       description:
@@ -350,6 +391,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'guesthub',
+      lineId: 'real-estate-intelligence',
       title: 'Anclora GuestHub',
       eyebrow: 'Alquiler vacacional y cumplimiento SES.HOSPEDAJES',
       description:
@@ -368,6 +410,7 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'energyscan',
+      lineId: 'energy-efficiency',
       title: 'Anclora EnergyScan',
       eyebrow: 'Energía inmobiliaria',
       description:
@@ -380,10 +423,11 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'filestudio',
+      lineId: 'secureflow',
       title: 'Anclora FileStudio',
       eyebrow: 'Procesamiento documental',
       description:
-        'Servicio transversal de conversión, tratamiento y preparación privada de archivos.',
+        'Conversión, tratamiento y preparación privada de archivos.',
       logoSrc: '/brand/anclora-filestudio.webp',
       kind: 'utility-platform',
       visibility: 'internal',
@@ -391,7 +435,44 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
       url: getEnvUrl('NEXT_PUBLIC_FILESTUDIO_URL', 'https://anclora-filestudio.vercel.app/'),
     },
     {
+      key: 'purgedoc',
+      lineId: 'secureflow',
+      title: 'Anclora PurgeDoc',
+      eyebrow: 'Privacidad documental',
+      description: 'Detección y eliminación verificable de información sensible.',
+      logoSrc: '/brand/anclora-purgedoc.webp',
+      kind: 'compliance-platform',
+      visibility: 'internal',
+      roles: ['group-admin', 'private-estates-ops', 'advisory', 'content-ops'],
+      url: getEnvUrl('NEXT_PUBLIC_PURGEDOC_URL', 'https://api.purgedoc.anclora.com/'),
+    },
+    {
+      key: 'tableextract',
+      lineId: 'secureflow',
+      title: 'Anclora TableExtract',
+      eyebrow: 'Extracción estructurada',
+      description: 'Extracción de tablas y datos estructurados desde documentos complejos.',
+      logoSrc: '/brand/anclora-tableextractor.webp',
+      kind: 'intelligence-platform',
+      visibility: 'internal',
+      roles: ['group-admin', 'private-estates-ops', 'advisory', 'content-ops'],
+      url: getEnvUrl('NEXT_PUBLIC_TABLEEXTRACT_URL', 'https://api.tableextractor.anclora.com/'),
+    },
+    {
+      key: 'cleansheet',
+      lineId: 'secureflow',
+      title: 'Anclora CleanSheet',
+      eyebrow: 'Automatización de datos',
+      description: 'Limpieza, transformación e integración de datos en sistemas de negocio.',
+      logoSrc: '/brand/anclora-clearsheet.webp',
+      kind: 'utility-platform',
+      visibility: 'internal',
+      roles: ['group-admin', 'private-estates-ops', 'advisory', 'content-ops'],
+      url: getEnvUrl('NEXT_PUBLIC_CLEANSHEET_URL', 'https://api.cleansheet.anclora.com/'),
+    },
+    {
       key: 'visionflow',
+      lineId: 'operational-automation',
       title: 'Anclora VisionFlow',
       eyebrow: 'Mapa visual',
       description:
@@ -429,6 +510,14 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
   ]
 
   return apps.map((app) => ({ ...app, ...APP_TAXONOMY[app.key] }))
+}
+
+export function getGroupStrategicLines(): GroupStrategicLine[] {
+  return STRATEGIC_LINES.map((line) => ({ ...line }))
+}
+
+export function getStrategicLineLabel(lineId: GroupStrategicLineId): string {
+  return STRATEGIC_LINES.find((line) => line.key === lineId)?.name ?? lineId
 }
 
 export function getAppsForRole(role: GroupRole) {
