@@ -95,6 +95,7 @@ export type GroupAppKind =
  * app is fully active — only apps with a real, deliberate non-active state
  * (e.g. Talent, paused) declare this field explicitly. */
 export type GroupAppStatus = 'active' | 'paused'
+export type GroupAppTier = 'internal' | 'premium' | 'ultra-premium' | 'microsaas' | 'portfolio'
 
 export type GroupAppDefinition = {
   key: GroupAppKey
@@ -110,6 +111,7 @@ export type GroupAppDefinition = {
   url: string
   /** Defaults to 'active' when omitted — see GroupAppStatus. */
   status?: GroupAppStatus
+  tier?: GroupAppTier
   lineId?: GroupStrategicLineId
 }
 
@@ -312,11 +314,12 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
     },
     {
       key: 'command-center',
+      tier: 'internal',
       lineId: 'operational-automation',
       title: 'Anclora Command Center',
       eyebrow: 'Centro de mando',
       description:
-        'Dashboard premium conectado a la bóveda para leer pulso ejecutivo, captación, partners y decisiones clave del ecosistema.',
+        'Interfaz operacional interna conectada a AOS, Knowledge y AKG para leer el pulso ejecutivo, partners y decisiones clave del ecosistema.',
       logoSrc: '/brand/anclora-command-center.webp',
       kind: 'ops-platform',
       visibility: 'internal',
@@ -468,11 +471,10 @@ export function getGroupAppDefinitions(): GroupAppDefinition[] {
       kind: 'utility-platform',
       visibility: 'internal',
       roles: ['group-admin', 'private-estates-ops', 'advisory', 'content-ops'],
-      url: getEnvUrl('NEXT_PUBLIC_CLEANSHEET_URL', 'https://api.cleansheet.anclora.com/'),
+      url: getEnvUrl('NEXT_PUBLIC_CLEANSHEET_URL', 'https://cleansheet.anclora.com/'),
     },
     {
       key: 'visionflow',
-      lineId: 'operational-automation',
       title: 'Anclora VisionFlow',
       eyebrow: 'Mapa visual',
       description:

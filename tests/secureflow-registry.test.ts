@@ -30,7 +30,26 @@ test('SecureFlow registry entries match canonical identity, descriptions, logos 
     assert.equal(app.description, expected[app.key][1])
     assert.match(app.logoSrc ?? '', /^\/brand\/anclora-/)
     assert.match(app.url, /^https:\/\//)
+    if (app.key === 'cleansheet') {
+      assert.equal(app.url, 'https://cleansheet.anclora.com/')
+    }
   }
+})
+
+test('VisionFlow stays unassigned until an authoritative strategic-line mapping exists', () => {
+  const visionFlow = getGroupAppDefinitions().find((app) => app.key === 'visionflow')
+  assert.ok(visionFlow)
+  assert.equal(visionFlow.lineId, undefined)
+})
+
+test('Command Center is an active internal AOS application, never a public Premium product', () => {
+  const commandCenter = getGroupAppDefinitions().find((app) => app.key === 'command-center')
+  assert.ok(commandCenter)
+  assert.equal(commandCenter.tier, 'internal')
+  assert.equal(commandCenter.visibility, 'internal')
+  assert.equal(commandCenter.status, undefined)
+  assert.equal(commandCenter.url, 'https://command-center.dev.anclora.com/')
+  assert.match(commandCenter.description, /interna/i)
 })
 
 test('SecureFlow role policy is isolated and does not broaden existing access', () => {
