@@ -61,7 +61,7 @@ Para el equipo de desarrollo, arquitectos y operaciones.
 | `05_anclora-data-lab_internal.md` | Data Lab | Premium |
 | `06_anclora-content-generator-ai_internal.md` | Content Generator AI | Premium |
 | `07_anclora-advisor-ai_internal.md` | Advisor AI | Premium |
-| `08_anclora-command-center_internal.md` | Command Center | Premium |
+| `08_anclora-command-center_internal.md` | Command Center | Internal |
 | `09_anclora-nexus_internal.md` | Nexus | Premium |
 | `10_anclora-portfolio_internal.md` | Portfolio | Portfolio |
 | `11_anclora-azure-bay_internal.md` | Azure Bay Landing | Portfolio |
