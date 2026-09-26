@@ -67,7 +67,7 @@ Justificación: Inter es la fuente más adecuada para interfaces operativas dens
 
 ---
 
-### Premium (Impulso, Data Lab, Talent, Synergi, Command Center)
+### Premium (Impulso, Data Lab, Talent, Synergi)
 
 | Rol | Fuente | Peso | Fallback | Variable CSS |
 |-----|--------|------|----------|-------------|
@@ -151,7 +151,7 @@ Justificación: Contraste serif (display) + sans-serif (body) clásico de marcas
 | `anclora-data-lab` | Premium | DM Sans | Georgia |
 | `anclora-talent` | Premium *(pausado)* | DM Sans | — |
 | `anclora-synergi` | Premium | DM Sans | Cardo, Inter |
-| `anclora-command-center` | Premium | DM Sans | — |
+| `anclora-command-center` | Internal | DM Sans | — |
 | `anclora-guesthub` | Premium | DM Sans *(pendiente de verificar estado real)* | Pendiente de auditoría |
 | `anclora-private-estates` | Ultra Premium | — | Cormorant Garamond |
 | `anclora-private-estates-landing-page` | Ultra Premium | Cardo, Fraunces | — |

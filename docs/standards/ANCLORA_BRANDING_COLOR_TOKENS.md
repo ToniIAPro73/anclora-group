@@ -360,7 +360,7 @@ Accent: Púrpura `#8C5AB4` | Secondary: Lavanda `#C4A0E0`
 
 ---
 
-## Anclora Command Center (Premium)
+## Anclora Command Center (Internal)
 
 Accent: Violeta premium `#6C63FF` | Secondary: Azul luminoso `#5FA8FF`
 
@@ -634,4 +634,3 @@ Accent: Signal Blue `#5FA8FF` | Acción primaria: Command Purple `#6C63FF` | Fon
 }
 ```
 Fuente: `src/styles/tokens.css` real, con comentario explícito en el propio código: *"Color (brand book v2.0 — sección 6)"*. Confirmado `body { background: var(--anchor-navy) }` en `globals.css`. **Esta es la app cuyo código real implementa el brand book más fielmente de todo el ecosistema auditado.**
-
