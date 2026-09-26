@@ -226,7 +226,7 @@ const APP_TAXONOMY: Record<GroupAppKey, Pick<GroupAppDefinition, 'businessArea' 
   // editorial-branch integration report for the explicit decision record).
   filestudio: { businessArea: 'utilities', architectureLayer: 'core' },
   purgedoc: { businessArea: 'utilities', architectureLayer: 'core' },
-  tableextract: { businessArea: 'intelligence-data', architectureLayer: 'core' },
+  tableextract: { businessArea: 'utilities', architectureLayer: 'core' },
   cleansheet: { businessArea: 'utilities', architectureLayer: 'core' },
   'content-generator-ai': { businessArea: 'content-ai', architectureLayer: 'activation' },
   'insights-adn': { businessArea: 'content-ai', architectureLayer: 'activation' },
@@ -644,5 +644,26 @@ export function searchGroupApps(apps: GroupAppDefinition[], query: string): Grou
       [app.title, app.eyebrow, app.description, app.kind, getBusinessAreaLabel(app.businessArea)].join(' '),
     )
     return haystack.includes(needle)
+  })
+}
+
+export type GroupAppFilters = {
+  query?: string
+  area?: GroupBusinessArea | 'all'
+  line?: GroupStrategicLineId | 'all'
+  visibility?: 'all' | 'internal' | 'external-facing'
+}
+
+/** Applies the catalog filters as one deterministic, testable operation. */
+export function filterGroupApps(apps: GroupAppDefinition[], filters: GroupAppFilters = {}): GroupAppDefinition[] {
+  const area = filters.area ?? 'all'
+  const line = filters.line ?? 'all'
+  const visibility = filters.visibility ?? 'all'
+
+  return searchGroupApps(apps, filters.query ?? '').filter((app) => {
+    if (area !== 'all' && app.businessArea !== area) return false
+    if (line !== 'all' && app.lineId !== line) return false
+    if (visibility !== 'all' && app.visibility !== visibility) return false
+    return true
   })
 }
