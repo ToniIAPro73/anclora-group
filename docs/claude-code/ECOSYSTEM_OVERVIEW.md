@@ -138,7 +138,7 @@ Repos del ecosistema fuera del registry del portal Anclora Group:
 | **Ultra Premium** | Private Estates | Oro `#D4AF37`, Teal `#07252F` | Cardo, Fraunces, Inter |
 | **Premium** | Synergi | Púrpura `#8C5AB4` | DM Sans |
 | **Premium** | Data Lab | Teal/Verde `#2DA078` | — |
-| **Premium** | Command Center (dashboard) | Dark premium | Inter |
+| **Internal** | Command Center (dashboard) | AOS/VPS internal | Inter |
 | **Interna** | Content Generator AI | Coral `#E06848` | Inter, JetBrains Mono |
 | **Interna** | Advisor AI | Mint `#1dab89`, Navy `#162944` | Cormorant Garamond, Source Sans 3 |
 | **Interna** | Nexus | Oro `#D4AF37`, Navy `#0F1629` | Inter, Playfair Display |
@@ -163,7 +163,7 @@ La bóveda canónica vive en `Anclora Command Center` (`docs/standards/`) y se p
 | `MODAL_CONTRACT.md` | Todos |
 | `LOCALIZATION_CONTRACT.md` | Todos |
 | `ANCLORA_ULTRA_PREMIUM_APP_CONTRACT.md` | Private Estates |
-| `ANCLORA_PREMIUM_APP_CONTRACT.md` | Synergi, Data Lab, Command Center dashboard |
+| `ANCLORA_INTERNAL_APP_CONTRACT.md` | Command Center dashboard |
 | `ANCLORA_INTERNAL_APP_CONTRACT.md` | Content Gen AI, Advisor AI, Nexus, Insights ADN, Talent |
 
 ---
