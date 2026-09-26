@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Search } from 'lucide-react'
 import type { GroupAppDefinition, GroupBusinessArea, GroupStrategicLineId } from '@/lib/group-access'
-import { getGroupBusinessAreas, getGroupStrategicLines, getStrategicLineLabel, searchGroupApps } from '@/lib/group-access'
+import { filterGroupApps, getGroupBusinessAreas, getGroupStrategicLines, getStrategicLineLabel } from '@/lib/group-access'
 import { getGroupMessages, getKindLabels } from '@/lib/group-ui'
 import { GroupAppCta } from '@/components/group/GroupAppCta'
 
@@ -28,12 +28,7 @@ export function GroupAppsCatalog({ apps }: Props) {
   const areas = getGroupBusinessAreas()
   const lines = getGroupStrategicLines()
 
-  const results = searchGroupApps(apps, query).filter((app) => {
-    if (area !== 'all' && app.businessArea !== area) return false
-    if (line !== 'all' && app.lineId !== line) return false
-    if (visibility !== 'all' && app.visibility !== visibility) return false
-    return true
-  })
+  const results = filterGroupApps(apps, { query, area, line, visibility })
 
   return (
     <section className="group-section" aria-label={ui.catalogTitle}>
@@ -56,6 +51,7 @@ export function GroupAppsCatalog({ apps }: Props) {
         <div className="group-chip-row" role="group" aria-label={ui.filterLineAll}>
           <button
             type="button"
+            aria-pressed={line === 'all'}
             className={`group-chip${line === 'all' ? ' is-active' : ''}`}
             onClick={() => setLine('all')}
           >
@@ -65,6 +61,7 @@ export function GroupAppsCatalog({ apps }: Props) {
             <button
               key={item.key}
               type="button"
+              aria-pressed={line === item.key}
               className={`group-chip${line === item.key ? ' is-active' : ''}`}
               onClick={() => setLine(item.key)}
             >
@@ -75,6 +72,7 @@ export function GroupAppsCatalog({ apps }: Props) {
         <div className="group-chip-row" role="group" aria-label={ui.filterAreaAll}>
           <button
             type="button"
+            aria-pressed={area === 'all'}
             className={`group-chip${area === 'all' ? ' is-active' : ''}`}
             onClick={() => setArea('all')}
           >
@@ -84,6 +82,7 @@ export function GroupAppsCatalog({ apps }: Props) {
             <button
               key={item.key}
               type="button"
+              aria-pressed={area === item.key}
               className={`group-chip${area === item.key ? ' is-active' : ''}`}
               onClick={() => setArea(item.key)}
             >
@@ -96,6 +95,7 @@ export function GroupAppsCatalog({ apps }: Props) {
             <button
               key={value}
               type="button"
+              aria-pressed={visibility === value}
               className={`group-chip${visibility === value ? ' is-active' : ''}`}
               onClick={() => setVisibility(value)}
             >
