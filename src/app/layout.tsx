@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { GroupCookieConsent } from '@/components/group/GroupCookieConsent'
 import { withBasePath } from '@/lib/group-base-path'
+import { versionedPublicAsset } from '@/lib/branding/icon-metadata'
 import './globals.css'
 
 const fraunces = localFont({
@@ -29,10 +30,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   icons: {
     icon: [
-      { url: withBasePath('/brand/favicon.ico'), sizes: 'any' },
-      { url: withBasePath('/brand/favicon-32.png'), type: 'image/png', sizes: '32x32' },
+      { url: withBasePath(versionedPublicAsset('/brand/favicon.ico')), sizes: 'any' },
+      { url: withBasePath(versionedPublicAsset('/brand/favicon-32.png')), type: 'image/png', sizes: '32x32' },
     ],
-    apple: withBasePath('/brand/apple-touch-icon.png'),
+    apple: withBasePath(versionedPublicAsset('/brand/apple-touch-icon.png')),
   },
 }
 
