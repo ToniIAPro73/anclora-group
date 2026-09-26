@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { Search } from 'lucide-react'
-import type { GroupAppDefinition, GroupBusinessArea } from '@/lib/group-access'
-import { getGroupBusinessAreas, searchGroupApps } from '@/lib/group-access'
+import type { GroupAppDefinition, GroupBusinessArea, GroupStrategicLineId } from '@/lib/group-access'
+import { getGroupBusinessAreas, getGroupStrategicLines, getStrategicLineLabel, searchGroupApps } from '@/lib/group-access'
 import { getGroupMessages, getKindLabels } from '@/lib/group-ui'
 import { GroupAppCta } from '@/components/group/GroupAppCta'
 
@@ -21,13 +21,16 @@ type Props = {
 export function GroupAppsCatalog({ apps }: Props) {
   const [query, setQuery] = useState('')
   const [area, setArea] = useState<GroupBusinessArea | 'all'>('all')
+  const [line, setLine] = useState<GroupStrategicLineId | 'all'>('all')
   const [visibility, setVisibility] = useState<VisibilityFilter>('all')
   const ui = getGroupMessages()
   const kindLabels = getKindLabels()
   const areas = getGroupBusinessAreas()
+  const lines = getGroupStrategicLines()
 
   const results = searchGroupApps(apps, query).filter((app) => {
     if (area !== 'all' && app.businessArea !== area) return false
+    if (line !== 'all' && app.lineId !== line) return false
     if (visibility !== 'all' && app.visibility !== visibility) return false
     return true
   })
@@ -50,6 +53,25 @@ export function GroupAppsCatalog({ apps }: Props) {
       </div>
 
       <div className="group-filters">
+        <div className="group-chip-row" role="group" aria-label={ui.filterLineAll}>
+          <button
+            type="button"
+            className={`group-chip${line === 'all' ? ' is-active' : ''}`}
+            onClick={() => setLine('all')}
+          >
+            {ui.filterLineAll}
+          </button>
+          {lines.map((item) => (
+            <button
+              key={item.key}
+              type="button"
+              className={`group-chip${line === item.key ? ' is-active' : ''}`}
+              onClick={() => setLine(item.key)}
+            >
+              {item.name}
+            </button>
+          ))}
+        </div>
         <div className="group-chip-row" role="group" aria-label={ui.filterAreaAll}>
           <button
             type="button"
@@ -94,7 +116,7 @@ export function GroupAppsCatalog({ apps }: Props) {
           {results.map((app) => (
             <article key={app.key} className="group-app-card">
               <div className="group-app-head">
-                <span>{app.eyebrow}</span>
+                <span>{app.lineId ? `${getStrategicLineLabel(app.lineId)} · ` : ''}{app.eyebrow}</span>
                 <small>
                   {app.visibility === 'internal' ? ui.visibilityInternal : ui.visibilityExternal}
                   {app.status === 'paused' ? ` · ${ui.statusPaused}` : ''}

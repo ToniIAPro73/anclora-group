@@ -43,6 +43,7 @@ type GroupUiMessages = {
   catalogEyebrow: string
   catalogTitle: string
   filterAreaAll: string
+  filterLineAll: string
   filterVisibilityAll: string
   architectureFilteredNote: string
   docsEyebrow: string
@@ -117,6 +118,7 @@ const messages: Record<GroupLocale, GroupUiMessages> = {
     catalogEyebrow: 'Catálogo',
     catalogTitle: 'Todas tus aplicaciones autorizadas',
     filterAreaAll: 'Todas las áreas',
+    filterLineAll: 'Todas las líneas',
     filterVisibilityAll: 'Todas',
     architectureFilteredNote: 'Vista filtrada a las aplicaciones autorizadas para tu rol.',
     docsEyebrow: 'Documentación privada',

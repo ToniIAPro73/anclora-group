@@ -97,7 +97,7 @@ Ondas = mismo color que el borde. Esquema monocromático.
 | Premium | `anclora-data-lab` | Cobre | `#2DA078` esmeralda | `#12201C` navy verde | 155° |
 | Premium | `anclora-talent` *(pausado)* | Cobre | `#4A9FD8` azul cielo | `#141E28` navy azul | 205° |
 | Premium | `anclora-synergi` | Cobre | `#8C5AB4` púrpura | `#1C162A` navy púrpura | 280° |
-| Premium | `anclora-command-center` | Azul/violeta | `#6C63FF` violeta premium + `#5FA8FF` azul luminoso | `#1E1A2E` navy púrpura | 245° |
+| Internal | `anclora-command-center` | Teal | Tier Internal; acentos funcionales conservados | Internal navy/teal | 180° |
 | Premium | `anclora-guesthub` *(añadido 2026-08 como `anclora-syncxml`; renombrado a GuestHub 2026-08)* | Cobre | `#BFA46A` dorado apagado | `#070A12` navy profundo *(inferido del fondo real del producto)* | 41° |
 | Premium | `anclora-groundsync` *(añadido 2026-08-03, reasignado)* | Cobre | `#6AAD49` verde musgo *(reasignado para resolver colisión con Talent; icono regenerado y verificado, CSS de la app aún en `#afd2fa` azul, pendiente de sincronizar)* | `#0f1739` navy azulado *(verificado, `--color-bg-base` dark)* | 100° |
 | Ultra | `anclora-private-estates` | Oro | `#D4AF37` oro | `#1A3035` teal oscuro | 45° |
