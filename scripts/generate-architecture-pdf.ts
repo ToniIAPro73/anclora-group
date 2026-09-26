@@ -173,8 +173,10 @@ async function buildPdf() {
   const startX = 72
   const topY = 700
   const columnHeight = 610
-  const rowPitch = 74
-  const rowHeight = 66
+  // Keep the eight-app core and activation lanes inside the landscape page.
+  // The registry is the source of truth, so this must remain safe as lanes grow.
+  const rowPitch = 61
+  const rowHeight = 54
 
   for (const [index, lane] of lanes.entries()) {
     const x = startX + index * (columnWidth + columnGap)
@@ -251,22 +253,24 @@ async function buildPdf() {
       })
 
       if (app.logoSrc) {
-        await drawLogo(pdfDoc, architecturePage, app.logoSrc, x + 26, cursorY - rowHeight + 10, 46, 46)
+        await drawLogo(pdfDoc, architecturePage, app.logoSrc, x + 26, cursorY - rowHeight + 9, 36, 36)
       }
 
+      const eyebrowLines = app.eyebrow.length > 36 ? 2 : 1
       architecturePage.drawText(app.eyebrow.toUpperCase(), {
         x: x + 86,
-        y: cursorY - 18,
-        size: 8,
+        y: cursorY - 16,
+        size: 7.5,
         font: sansBold,
         color: rgb(0.84, 0.88, 0.92),
         maxWidth: columnWidth - 120,
+        lineHeight: 9,
       })
 
       architecturePage.drawText(app.title, {
         x: x + 86,
-        y: cursorY - 42,
-        size: 13.5,
+        y: cursorY - (eyebrowLines === 2 ? 45 : 36),
+        size: 12.5,
         font: serif,
         color: rgb(0.98, 0.96, 0.93),
         maxWidth: columnWidth - 120,
