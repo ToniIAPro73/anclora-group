@@ -172,7 +172,9 @@ async function buildPdf() {
   const columnGap = 24
   const startX = 72
   const topY = 700
-  const columnHeight = 610
+  // Leave enough vertical room for the largest lanes without letting the last
+  // application card cross the column frame.
+  const columnHeight = 650
   // Keep the eight-app core and activation lanes inside the landscape page.
   // The registry is the source of truth, so this must remain safe as lanes grow.
   const rowPitch = 61
