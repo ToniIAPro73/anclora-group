@@ -3,12 +3,10 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { Search } from 'lucide-react'
-import type { GroupAppDefinition, GroupBusinessArea, GroupStrategicLineId } from '@/lib/group-access'
-import { filterGroupApps, getGroupBusinessAreas, getGroupStrategicLines, getStrategicLineLabel } from '@/lib/group-access'
+import type { GroupAppDefinition, GroupStrategicLineId } from '@/lib/group-access'
+import { filterGroupApps, getGroupStrategicLines, getStrategicLineLabel } from '@/lib/group-access'
 import { getGroupMessages, getKindLabels } from '@/lib/group-ui'
 import { GroupAppCta } from '@/components/group/GroupAppCta'
-
-type VisibilityFilter = 'all' | 'internal' | 'external-facing'
 
 type Props = {
   apps: GroupAppDefinition[]
@@ -20,15 +18,12 @@ type Props = {
  */
 export function GroupAppsCatalog({ apps }: Props) {
   const [query, setQuery] = useState('')
-  const [area, setArea] = useState<GroupBusinessArea | 'all'>('all')
   const [line, setLine] = useState<GroupStrategicLineId | 'all'>('all')
-  const [visibility, setVisibility] = useState<VisibilityFilter>('all')
   const ui = getGroupMessages()
   const kindLabels = getKindLabels()
-  const areas = getGroupBusinessAreas()
   const lines = getGroupStrategicLines()
 
-  const results = filterGroupApps(apps, { query, area, line, visibility })
+  const results = filterGroupApps(apps, { query, line })
 
   return (
     <section className="group-section" aria-label={ui.catalogTitle}>
@@ -66,40 +61,6 @@ export function GroupAppsCatalog({ apps }: Props) {
               onClick={() => setLine(item.key)}
             >
               {item.name}
-            </button>
-          ))}
-        </div>
-        <div className="group-chip-row" role="group" aria-label={ui.filterAreaAll}>
-          <button
-            type="button"
-            aria-pressed={area === 'all'}
-            className={`group-chip${area === 'all' ? ' is-active' : ''}`}
-            onClick={() => setArea('all')}
-          >
-            {ui.filterAreaAll}
-          </button>
-          {areas.map((item) => (
-            <button
-              key={item.key}
-              type="button"
-              aria-pressed={area === item.key}
-              className={`group-chip${area === item.key ? ' is-active' : ''}`}
-              onClick={() => setArea(item.key)}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-        <div className="group-chip-row" role="group" aria-label={ui.filterVisibilityAll}>
-          {(['all', 'internal', 'external-facing'] as const).map((value) => (
-            <button
-              key={value}
-              type="button"
-              aria-pressed={visibility === value}
-              className={`group-chip${visibility === value ? ' is-active' : ''}`}
-              onClick={() => setVisibility(value)}
-            >
-              {value === 'all' ? ui.filterVisibilityAll : value === 'internal' ? ui.visibilityInternal : ui.visibilityExternal}
             </button>
           ))}
         </div>
