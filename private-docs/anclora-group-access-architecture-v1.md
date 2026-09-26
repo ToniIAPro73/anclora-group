@@ -1,7 +1,40 @@
-# Anclora Group Access Architecture v1
+# Anclora Group Access Architecture v2
 
-Fecha: 2026-03-23  
-Estado: propuesta de arquitectura de accesos y transición
+Fecha de sincronización: 2026-09-27
+Estado: documento privado sincronizado con `src/lib/group-access.ts` y los logos actuales de `public/brand/`
+
+## 0. Snapshot vigente del catálogo
+
+Este documento ya no usa una selección editorial parcial como fuente de verdad. El
+registry actual contiene **20 aplicaciones** y la documentación visual se genera
+desde ese registry.
+
+### SecureFlow
+
+SecureFlow es una línea estratégica con exactamente cuatro aplicaciones:
+
+| Aplicación | Área actual | Logo |
+| --- | --- | --- |
+| Anclora FileStudio | Utilidades | `public/brand/anclora-filestudio.webp` |
+| Anclora PurgeDoc | Utilidades | `public/brand/anclora-purgedoc.webp` |
+| Anclora TableExtract | Utilidades | `public/brand/anclora-tableextractor.webp` |
+| Anclora CleanSheet | Utilidades | `public/brand/anclora-clearsheet.webp` |
+
+TableExtract se clasifica en **Utilidades**, no en Inteligencia y Datos. El
+catálogo corporativo muestra las aplicaciones autorizadas para el rol de la
+sesión; por eso el número visible puede variar por rol. La landing pública
+presenta el catálogo propio completo: **15 productos**, distribuidos en 11
+productos Tier 1 y 4 módulos Tier 2.
+
+### Criterio de selección
+
+- `src/lib/group-access.ts` es la fuente de verdad del portal autenticado.
+- `src/data/products.ts` es la fuente de verdad de los 15 productos propios de la landing.
+- `src/data/ecosystem.ts` define las seis líneas estratégicas y la pertenencia de SecureFlow.
+- Los logos se sirven desde `public/brand/` en el portal y desde imports estáticos de `src/assets/logo/` en la landing.
+
+Las secciones históricas de este documento se conservan como contexto de transición;
+el snapshot anterior no debe interpretarse como un inventario vigente.
 
 ## 1. Problema actual
 

@@ -63,7 +63,7 @@ Anclora Group (Entidad Matriz) — hub corporativo interno
 
 ## 3. Inventario de Aplicaciones
 
-La fuente de verdad del catálogo del portal Anclora Group es el registry `src/lib/group-access.ts` (17 apps registradas). Este inventario es una vista de ecosistema: incluye además repositorios fuera del registry del portal (Portfolio, Azure Bay).
+La fuente de verdad del catálogo del portal Anclora Group es el registry `src/lib/group-access.ts` (20 apps registradas). Este inventario es una vista de ecosistema: incluye además repositorios fuera del registry del portal (Portfolio, Azure Bay). El número de aplicaciones visibles puede variar por rol; el registro completo contiene las 20.
 
 ### 3.1 Empresa Matriz
 
@@ -200,7 +200,7 @@ Anclora Group organiza las apps en 3 capas (entry / core / activation) y 7 roles
 
 | Rol | Apps con acceso |
 |-----|------------------|
-| `group-admin` | Todas las apps (17) |
+| `group-admin` | Todas las apps (20) |
 | `private-estates-ops` | `private-estates`, `private-estates-landing`, `synergi`, `data-lab`, `nexus`, `command-center`, `content-generator-ai`, `guesthub`, `energyscan`, `filestudio`, `visionflow` (11) |
 | `partner-ops` | `private-estates`, `private-estates-landing`, `synergi`, `data-lab`, `command-center` (5) |
 | `data-ops` | `private-estates`, `private-estates-landing`, `data-lab`, `command-center`, `energyscan`, `visionflow` (6) |

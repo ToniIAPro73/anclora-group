@@ -4,6 +4,7 @@ import {
   getArchitectureLanes,
   getGroupAppDefinitions,
   getGroupBusinessAreas,
+  filterGroupApps,
   isGroupRole,
 } from '../src/lib/group-access'
 
@@ -62,4 +63,22 @@ test('role-filtered architecture only contains apps allowed for that role', () =
   for (const app of shown) {
     assert.ok(app.roles.includes('advisory'), `${app.key} should not be visible to advisory`)
   }
+})
+
+test('TableExtract is classified under Utilities', () => {
+  const tableExtract = getGroupAppDefinitions().find((app) => app.key === 'tableextract')
+  assert.ok(tableExtract)
+  assert.equal(tableExtract.businessArea, 'utilities')
+})
+
+test('catalog filters compose by line, area, visibility and search', () => {
+  const apps = getGroupAppDefinitions()
+  assert.deepEqual(filterGroupApps(apps, { line: 'secureflow' }).map((app) => app.key), [
+    'filestudio', 'purgedoc', 'tableextract', 'cleansheet',
+  ])
+  assert.deepEqual(filterGroupApps(apps, { area: 'utilities' }).map((app) => app.key), [
+    'filestudio', 'purgedoc', 'tableextract', 'cleansheet', 'linguo-cam',
+  ])
+  assert.ok(filterGroupApps(apps, { visibility: 'internal' }).every((app) => app.visibility === 'internal'))
+  assert.deepEqual(filterGroupApps(apps, { query: 'table' }).map((app) => app.key), ['tableextract'])
 })
