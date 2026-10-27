@@ -1,15 +1,23 @@
 # ANCLORA_AUTH_LOGIN_SCREEN_CONTRACT
 
-**Versión:** 1.3.0
-**Fecha:** 2026-05-29
-**Scope:** Todas las apps Anclora Group con pantalla de login
-**Cambios v1.3.0:** Dimensiones definitivas verificadas con regla px: card 460×560px, logo 50px sin contenedor.
+**Versión:** 1.4.0
+**Fecha:** 2026-10-27
+**Scope:** Todas las aplicaciones Anclora Group con login y la pantalla de autenticación central de Anclora Identity.
+**Cambios v1.4.0:** Define Anclora Identity como proveedor OIDC central, añade marca contextual de la aplicación solicitante y establece el alta por invitación. Conserva las reglas visuales comunes v1.3.0.
 
 ---
 
 ## Propósito
 
-Definir la estructura visual, funcional y de i18n obligatoria para las pantallas de login de todas las apps del ecosistema Anclora Group. Garantizar coherencia premium entre apps manteniendo la identidad visual de cada una.
+Definir la estructura visual, funcional y de i18n obligatoria para las pantallas de login del ecosistema Anclora Group. Garantiza coherencia visual y accesible, mantiene la identidad de cada producto y establece cómo se presenta el login centralizado.
+
+## Modelo de autenticación del ecosistema
+
+- **Anclora Identity es el proveedor OIDC central (OpenID Provider, OP)**. Autentica a las personas y mantiene sus métodos de autenticación y sesiones centrales.
+- Las aplicaciones integradas son **clientes OIDC (Relying Parties, RP)**. Redirigen a Identity, reciben el resultado OIDC y conservan la autorización específica de su producto.
+- Los clientes no deben pedir ni almacenar la contraseña de Identity ni implementar por separado las credenciales de Google o GitHub cuando estén federadas por Identity.
+- Una membresía en Identity permite iniciar el flujo para el cliente correspondiente; no concede por sí sola roles ni permisos de negocio dentro de la aplicación. La RP aplica su autorización local.
+- El registro de nuevos clientes OIDC y sus URI de retorno es una operación administrativa; la pantalla de login no permite registrar clientes ni elegir una URI de retorno.
 
 ---
 
@@ -18,10 +26,13 @@ Definir la estructura visual, funcional y de i18n obligatoria para las pantallas
 | App                          | Grupo     | Idiomas                    | OAuth social           |
 | ---------------------------- | --------- | -------------------------- | ---------------------- |
 | anclora-impulso              | Portfolio | ES, EN                     | No — botones disabled  |
-| anclora-energyscan           | Premium   | ES, CA, EN, DE, FR, IT, PT | Sí (Google, GitHub)    |
+| anclora-energyscan           | Premium   | ES, CA, EN, DE, FR, IT, PT | Vía Identity central al integrar la RP |
 | anclora-advisor-ai           | Portfolio | ES, EN                     | No — botones disabled  |
 | anclora-content-generator-ai | Internal  | ES, CA, EN, DE             | No — botones disabled  |
-| anclora-nexus                | Internal  | ES, EN, DE                 | Sí (Google, GitHub)    |
+| anclora-nexus                | Internal  | ES, EN, DE                 | Vía Identity central al integrar la RP |
+| anclora-identity             | Plataforma central | ES, EN              | Google y GitHub como proveedores federados centrales; solo activos tras habilitación completa |
+
+La tabla declara la experiencia objetivo del contrato; el estado de integración y despliegue de cada RP se mantiene en la matriz de migración de Identity. Google y Gmail son el mismo proveedor de acceso y se muestran como **Google**.
 
 ---
 
@@ -44,6 +55,49 @@ El card de login debe contener, en este orden exacto:
 ```
 
 **REGLA:** El punto 3 es solo el nombre. Sin "Bienvenido de vuelta" ni subtítulos.
+
+### Extensión para Anclora Identity como proveedor OIDC
+
+La extensión mantiene la tarjeta, dimensiones, tipografía, controles, accesibilidad y jerarquía visual de este contrato. Cambia únicamente el contexto de marca y la semántica de alta:
+
+```text
+1.  Logo local de la aplicación cliente solicitante — centrado, 50px, sin contenedor
+2.  Divisor con el acento visual de la aplicación
+3.  Nombre de la aplicación cliente (p. ej. Anclora Nexus)
+4.  Atribución discreta del emisor: "Autenticación segura por Anclora Identity"
+5.  Correo y contraseña, con control accesible para mostrar/ocultar la contraseña
+6.  Botón principal "Iniciar sesión"
+7.  Enlace funcional "¿Has olvidado tu contraseña?"
+8.  Bloque de acceso: explica que el acceso es por invitación y ofrece "Solicitar acceso"
+9.  Separador y botones Google/GitHub, activos solo cuando su federación esté operativa
+10. Avisos legales de Anclora Identity con enlaces reales a sus términos y privacidad
+```
+
+- El nombre, logotipo, idioma y acento de la RP se resuelven desde un **registro confiable de clientes OIDC** asociado al `client_id` ya validado por el proveedor.
+- La marca no se obtiene de parámetros libres como `app`, `logo`, `redirect_uri`, `return_to` o equivalentes proporcionados por el navegador. No se carga un logotipo arbitrario indicado por la solicitud.
+- Cada cliente registrado declara nombre visible, recurso gráfico aprobado y metadatos de localización. El logotipo se sirve desde activos controlados por Anclora; un logotipo ausente o un acceso directo al emisor usa la marca de Anclora Identity.
+- La atribución a Identity identifica quién autentica a la persona; no sustituye el nombre ni el logotipo de la aplicación a la que intenta acceder.
+- La atribución al emisor es una etiqueta de confianza del flujo OIDC, no un subtítulo de bienvenida. Mantiene el tamaño discreto y el espaciado de la cabecera común; la tarjeta sigue las dimensiones de este contrato.
+- La pantalla no puede alterar el cliente OIDC, los ámbitos autorizados ni la URI de retorno recibidos en el flujo.
+- Para un cliente desconocido, solicitud inválida o interacción no asociada a una aplicación, se muestra la pantalla de error/identidad definida por Identity y no se infiere la marca a partir de la URL.
+
+### Registro por invitación en Identity
+
+Identity usa **alta cerrada por invitación**, no autorregistro público. El bloque que en una RP puede decir «Crear cuenta» se adapta así:
+
+- Mostrar «Acceso por invitación» y un enlace o indicación «Solicitar acceso» dirigido al canal de contacto del producto solicitante. No presentar «Crear cuenta» como si el usuario pudiera autoaprovisionarse.
+- Solo un administrador u operador autorizado puede emitir una invitación y asociarla a una aplicación cliente. El usuario acepta un enlace de un solo uso, verifica posesión del correo y establece su propia contraseña.
+- Aceptar una invitación puede crear/activar la identidad y la membresía en esa aplicación; nunca concede por sí solo roles de plataforma ni permisos locales de la RP.
+- Para iniciar sesión en otra aplicación se requiere la membresía correspondiente. La aplicación solicitante también puede exigir una cuenta, organización o autorización local propia.
+- Una cuenta de operador inicial creada mediante bootstrap es una excepción operativa; no convierte el alta pública en una función disponible.
+
+### Recuperación de contraseña y federación social en Identity
+
+- El enlace de recuperación debe llevar a un flujo funcional de Identity. Debe usar un token aleatorio, de un solo uso, con vencimiento, almacenar solo su hash y no enviar nunca una contraseña por correo. La respuesta inicial no debe revelar si una dirección está registrada y el endpoint debe limitar intentos.
+- Google y GitHub se conectan como **proveedores upstream de Anclora Identity**. Una vez habilitados, todas las RP usan la federación central; no duplican credenciales OAuth de Google/GitHub en cada aplicación.
+- El inicio federado debe vincularse a una identidad existente de forma segura. No debe crear membresías de aplicaciones ni asignar roles por el mero hecho de autenticarse con Google/GitHub. Email verificado, vinculación de cuentas y política de invitación siguen siendo obligatorios.
+- Hasta que el flujo central completo esté implementado, probado y habilitado, los botones sociales permanecen visibles pero desactivados con el estado traducido «Próximamente». No se simula un login social.
+- Los enlaces legales de la pantalla de Identity corresponden a las páginas legales del emisor Identity; los enlaces legales propios del producto cliente pueden añadirse como contexto secundario cuando el contrato local lo requiera.
 
 ---
 
@@ -149,6 +203,8 @@ transition-[transform,box-shadow] duration-300 ease-out
 - Si OAuth inactivo:   disabled, opacity-50, cursor-not-allowed, title="Próximamente"
 ```
 
+En la pantalla de Identity, estos botones representan federación **desde Identity hacia Google o GitHub**. No son botones para enviar credenciales de esos proveedores directamente a la RP. En cada RP, la acción social redirige al login central de Identity.
+
 ---
 
 ## Texto del botón principal — REGLA OBLIGATORIA
@@ -182,6 +238,8 @@ auth.noAccount, auth.signUp / auth.register
 auth.socialAccess, auth.google, auth.github, auth.socialComingSoon
 auth.legalPrefix, auth.terms, auth.legalMiddle, auth.privacy, auth.legalSuffix
 ```
+
+En el perfil Identity, sustituir las claves de autorregistro por `auth.invitedOnly` y `auth.requestAccess`; incluir también `auth.identityIssuer` para la atribución central. La pantalla debe usar el idioma admitido solicitado mediante `ui_locales` cuando corresponda y aplicar un fallback local definido; nunca mezclar idiomas.
 
 **Eliminadas en v1.1.0:** `auth.welcomeBack`, `auth.signInMessage` — no aparecen en el card.
 
