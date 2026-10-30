@@ -51,6 +51,7 @@ Las decisiones visuales y de composición deben apoyarse en estas capas reales d
 Regla práctica:
 - si el cambio afecta implementación visual, primero se busca la pieza en `anclora-design-system`
 - si el cambio afecta alcance, clasificación o excepciones, primero se consulta la bóveda
+- Los contratos transversales de UI se aplican según los roles vigentes del inventario canónico y la superficie real consumidora; sus arrays `applies_to_repos` son proyecciones validadas, no listas de alcance independientes.
 
 ## Alcance de esta fase
 
@@ -62,10 +63,11 @@ Aplicaciones internas:
 - `anclora-fiscal` *(añadida 2026-08, verificada contra código real)*
 - `anclora-visionflow` *(añadida 2026-08, verificada contra código real)*
 - `anclora-linguo-cam` *(incorporada 2026-08-02 al ecosistema gobernado — antes clasificada como "Independent Product"; decisión explícita del cliente, verificada contra código real)*
+- `anclora-command-center` *(reclasificada desde Premium por CHG-0019, 2026-09-27; interfaz operacional interna AOS/VPS)*
 
 Aplicaciones MicroSaaS:
 - `anclora-tableextractor`
-- `anclora-clearsheet`
+- `anclora-cleansheet`
 - `anclora-purgedoc`
 
 El tier `MicroSaaS` agrupa utilidades SaaS enfocadas y recurrentes con flujos compactos,
@@ -74,13 +76,13 @@ feedback de procesamiento explícito y resultados verificables. Consume el tier 
 
 Aplicaciones premium:
 - `anclora-impulso`
-- `anclora-command-center`
 - `anclora-synergi`
 - `anclora-data-lab`
 - `anclora-energyscan`
 - `anclora-talent` *(estado: pausado, fuera de alcance activo desde 2026-08 — ver `00-governance/registry/ecosystem-repos.json`)*
 - `anclora-guesthub` *(añadida 2026-08 como `anclora-syncxml`, verificada contra código real, estado `pre-mvp`; renombrada a GuestHub 2026-08)*
 - `anclora-groundsync` *(añadida 2026-08-03, verificada contra código real — app interna de uso operativo pero gobernada como producto independiente, comparable a `anclora-impulso`; decisión explícita del cliente)*
+- `anclora-shiftimport` *(añadida 2026-10; producto Premium pre-MVP con superficie UI gobernada y consumidora del Design System)*
 
 Aplicaciones ultra premium:
 - `anclora-private-estates`
@@ -91,7 +93,6 @@ Aplicaciones portfolio / showcase *(sección añadida 2026-08)*:
 - `anclora-azure-bay-landing-page` *(nombre de repo corregido 2026-08 — `anclora-azure-bay-landing` sin el sufijo `-page` no existe, devuelve 404 en GitHub)*
 - `anclora-portfolio-showcase`
 - `anclora-energyscan-showcase` *(hereda tema completo de `anclora-energyscan`, no el genérico portfolio — es el producto real en fase MVP mostrándose, no una pieza de demo)*
-- `anclora-syncxml-showcase` *(mismo criterio que energyscan-showcase, producto real en fase pre-mvp)*
 - `anclora-fiscal-showcase`
 - `anclora-advisor-ai-showcase` *(registrado 2026-09-25, CHG-0015; hereda de `anclora-advisor-ai`)*
 - `anclora-guesthub-showcase` *(registrado 2026-09-25, CHG-0015; hereda de `anclora-guesthub`)*
@@ -179,10 +180,8 @@ Documentos de apoyo no normativos:
 - `anclora-azure-bay-landing-page` *(nombre corregido 2026-08, ver nota arriba)*
 - `anclora-portfolio-showcase`
 - `anclora-energyscan-showcase`
-- `anclora-syncxml-showcase`
 - `anclora-fiscal-showcase`
 - `anclora-group-landing`
-- `anclora-playa-viva-uniestate`
 
 ## Ramas operativas por repositorio
 
@@ -192,7 +191,6 @@ Excepciones documentadas:
 
 | Repo | Rama operativa | Motivo |
 |---|---|---|
-| `anclora-playa-viva-uniestate` | `development` | Landing en desarrollo activo; no operar sobre `main` |
 | `anclora-impulso` | `master` | Convención histórica del repo; equivalente a `main` operativo |
 
 > Nota 2026-08-01: `anclora-azure-bay-landing-page` deja de ser excepción — su rama operativa vuelve a ser `main` por decisión de Toni (la historia real ya operaba sobre `main`). La rama `development` fue jubilada y eliminada (local y remoto) tras verificar que era ancestro completo de `main` — no se perdió ningún commit.
@@ -250,7 +248,7 @@ Al crear una app nueva:
 | `anclora-nexus` | Interna | `es`, `en`, `de`, `ru` | `dark` operativo | Base + interno |
 | `anclora-content-generator-ai` | Interna | `es`, `en` | `dark/light/system` | Base + interno |
 | `anclora-impulso` | Premium | `es`, `en` | `dark/light` | Base + premium |
-| `anclora-command-center` | Internal | `es`, `en`, `de` | `dark/light` | Base + internal |
+| `anclora-command-center` | Internal | `es`, `en`, `de` | `dark/light` | Base + interno |
 | `anclora-synergi` | Premium | `es`, `en`, `de` | tema editorial único | Base + premium |
 | `anclora-data-lab` | Premium | `es`, `en`, `de` | `dark/light/system` | Base + premium |
 | `anclora-energyscan` | Premium / Real Estate + Energy Intelligence | `es`, `en`, `de` | `dark/light/system` | Base + premium |
@@ -261,7 +259,7 @@ Al crear una app nueva:
 | `anclora-visionflow` | Interna | Pendiente de auditoría de locales | `dark/light` confirmado — ambos modos definidos en el repo real (`.dark { --avf-accent }` y `:root` claro) | Base + interno |
 | `anclora-linguo-cam` | Interna | Pendiente de auditoría de locales | `dark/light` confirmado — ambos modos definidos en `index.css` real; acento lima `#59B635` asignado 2026-08-02 al incorporarla (resuelve colisión exacta con `advisor-ai`, ver `ANCLORA_BRANDING_MASTER_CONTRACT.md`) | Base + interno |
 | `anclora-tableextractor` | MicroSaaS | `es`, `en` | `dark/light/system` documentado; acento cyan `#38BDF8` | Base + microsaas |
-| `anclora-clearsheet` | MicroSaaS | `es`, `en` | `dark/light` documentado; acento azul `#2563EB` | Base + microsaas |
+| `anclora-cleansheet` | MicroSaaS | `es`, `en` | `dark/light` documentado; acento azul `#2563EB` | Base + microsaas |
 | `anclora-purgedoc` | MicroSaaS | `es`, `en` | `dark/light/system` documentado; acento azul `#3B82F6` | Base + microsaas |
 | `anclora-guesthub` | Premium | Pendiente de auditoría de locales | `dark` confirmado (navy `#070A12` + dorado apagado `#BFA46A`), `light` no verificado en esta sesión | Base + premium |
 | `anclora-groundsync` | Premium | Pendiente de auditoría de locales | `dark/light` confirmado — ambos modos definidos en `src/index.css` real (`:root` dark + `:root[data-theme='light']`); accent `#afd2fa`/`#2f6fd9` | Base + premium |
@@ -269,10 +267,8 @@ Al crear una app nueva:
 | `anclora-azure-bay-landing-page` | Portfolio / showcase | `es`, `en` | tema editorial único — nombre de repo corregido 2026-08, icono comparte lockup de Private Estates (navbar corporativo), acento se queda en portfolio genérico (pieza de demo, no producto) | Base + portfolio |
 | `anclora-portfolio-showcase` | Portfolio / showcase | `es`, `en` | tema editorial único, hereda de `anclora-portfolio` | Base + portfolio |
 | `anclora-energyscan-showcase` | Portfolio / showcase (excepción) | `es`, `en`, `de` | hereda tema completo de `anclora-energyscan` (verde `#00DC82`), NO el editorial genérico — es el producto real en MVP mostrándose | Base + portfolio |
-| `anclora-syncxml-showcase` | Portfolio / showcase (excepción) | Pendiente de auditoría | hereda tema completo de `anclora-guesthub` (dorado `#BFA46A`), mismo criterio que energyscan-showcase | Base + portfolio |
 | `anclora-fiscal-showcase` | Portfolio / showcase | Pendiente de auditoría | tema editorial único genérico | Base + portfolio |
 | `anclora-group-landing` | Portfolio / showcase (excepción) | Pendiente de auditoría de locales | identidad brand-book completa propia (navy `#0A1F3D`, signal-blue `#5FA8FF`, command-purple `#6C63FF`) — NO el editorial genérico, verificado 2026-08 contra `src/styles/tokens.css` real | Base + portfolio |
-| `anclora-playa-viva-uniestate` | Portfolio / showcase | `es`, `en` | tema editorial único | Base + portfolio |
 
 Entidad transversal fuera de familias de app:
 - `anclora-group` se trata como entidad matriz y portal corporativo, con branding propio definido en `ANCLORA_BRANDING_*`, no como app interna del grupo.
