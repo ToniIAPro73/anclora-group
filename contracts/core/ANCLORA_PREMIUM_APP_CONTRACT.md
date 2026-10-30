@@ -5,7 +5,6 @@ Fijar una gramática premium compartida para productos públicos o semi-público
 
 Ámbito:
 - `anclora-impulso`
-- `anclora-command-center`
 - `anclora-synergi`
 - `anclora-data-lab`
 - `anclora-energyscan`
@@ -20,7 +19,6 @@ Fijar una gramática premium compartida para productos públicos o semi-público
 ## Repos a los que aplica
 
 - `anclora-impulso`
-- `anclora-command-center`
 - `anclora-synergi`
 - `anclora-data-lab`
 - `anclora-energyscan`
@@ -185,4 +183,3 @@ Una feature premium no está lista si:
 - el selector de idioma o tema rompe el acabado de marca
 - una misma familia de botón cambia el foreground o la legibilidad entre temas sin motivo contractual explícito
 - resuelve sus componentes críticos fuera de `anclora-design-system` sin haber promovido antes la pieza común
-

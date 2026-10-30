@@ -23,7 +23,7 @@ El ecosistema se organiza en capas (decisión D-3, actualizada por el cutover de
 Reglas de la capa documental:
 - La vault documenta; AOS consume; Knowledge/AKG derivan.
 - Los registries JSON de `00-governance/registry/` son la verdad máquina de repos/contratos.
-- **Command Center** (HOLD) se concibe como consumidor/interfaz futura sobre la operativa del
+- **Command Center** (ACTIVE, tier Internal) opera como consumidor/interfaz interna sobre la operativa del
   ecosistema, no como fuente de verdad.
 - Los estados de producto (`ACTIVE/HOLD/LEGACY/DEPRECATED`) viven en frontmatter de cada dossier
   y en el portfolio audit (`10-group/corporate/portfolio/`).
@@ -82,7 +82,7 @@ Reglas:
 | Anclora Talent | Producto separado | `anclora-talent` | Por confirmar | Por confirmar | Por confirmar |
 | Anclora Impulso | Producto separado | `anclora-impulso` | Por confirmar | Por confirmar | Por confirmar |
 | Anclora Linguo Cam | Videollamadas con traduccion en tiempo real | `anclora-linguo-cam` | Vercel probable | Servicios auxiliares por confirmar | Variables propias |
-| Anclora Command Center | Consumidor/interfaz futura de la operativa | `anclora-command-center` | Por confirmar | Por confirmar | Por confirmar |
+| Anclora Command Center | Interfaz operacional interna activa sobre AOS/Knowledge/AKG | `anclora-command-center` | AOS/VPS | `https://command-center.dev.anclora.com/` | Privado; no público |
 
 No inventar certezas: usar "por confirmar" donde no haya evidencia local o contractual confirmada.
 Estados de producto según portfolio audit 2026-08 (`10-group/corporate/portfolio/`).

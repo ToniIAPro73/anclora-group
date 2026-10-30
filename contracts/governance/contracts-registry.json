@@ -56,10 +56,7 @@
         "anclora-private-estates",
         "anclora-private-estates-landing",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-portfolio",
-        "anclora-inmoprep",
-        "anclora-insights",
         "anclora-linguo-cam",
         "anclora-press",
         "anclora-agent-skills",
@@ -231,11 +228,9 @@
       ],
       "applies_to_repos": [
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-portfolio",
         "anclora-portfolio-showcase",
         "anclora-energyscan-showcase",
-        "anclora-syncxml-showcase",
         "anclora-fiscal-showcase",
         "anclora-advisor-ai-showcase",
         "anclora-guesthub-showcase",
@@ -339,7 +334,6 @@
         "anclora-private-estates",
         "anclora-portfolio-showcase",
         "anclora-energyscan-showcase",
-        "anclora-syncxml-showcase",
         "anclora-fiscal-showcase",
         "anclora-advisor-ai-showcase",
         "anclora-guesthub-showcase",
@@ -488,7 +482,6 @@
         "anclora-private-estates",
         "anclora-portfolio-showcase",
         "anclora-energyscan-showcase",
-        "anclora-syncxml-showcase",
         "anclora-fiscal-showcase",
         "anclora-advisor-ai-showcase",
         "anclora-guesthub-showcase",
@@ -547,7 +540,6 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-group-landing"
       ],
       "propagation_targets": [
@@ -639,7 +631,6 @@
         "anclora-private-estates",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-group-landing",
         "anclora-group"
       ],
@@ -689,7 +680,6 @@
         "anclora-private-estates",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-group-landing",
         "anclora-group"
       ],
@@ -738,7 +728,6 @@
         "anclora-private-estates",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-group-landing",
         "anclora-group"
       ],
@@ -800,7 +789,6 @@
         "anclora-private-estates",
         "anclora-private-estates-landing",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-portfolio",
         "anclora-linguo-cam",
         "anclora-tableextractor",
@@ -810,7 +798,6 @@
         "anclora-shiftimport",
         "anclora-portfolio-showcase",
         "anclora-energyscan-showcase",
-        "anclora-syncxml-showcase",
         "anclora-fiscal-showcase",
         "anclora-group-landing",
         "anclora-advisor-ai-showcase",
@@ -968,7 +955,6 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-linguo-cam"
       ],
       "propagation_targets": [
@@ -1027,7 +1013,6 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-linguo-cam"
       ],
       "propagation_targets": [
@@ -1083,7 +1068,6 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-linguo-cam"
       ],
       "propagation_targets": [
@@ -1135,7 +1119,6 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-linguo-cam"
       ],
       "propagation_targets": [
@@ -1187,7 +1170,6 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-linguo-cam"
       ],
       "propagation_targets": [
@@ -1239,7 +1221,6 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-linguo-cam"
       ],
       "propagation_targets": [
@@ -1291,7 +1272,6 @@
         "anclora-private-estates-landing",
         "anclora-portfolio",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-linguo-cam"
       ],
       "propagation_targets": [
@@ -1348,10 +1328,7 @@
         "anclora-private-estates",
         "anclora-private-estates-landing",
         "anclora-azure-bay-landing",
-        "anclora-playa-viva-uniestate",
         "anclora-portfolio",
-        "anclora-inmoprep",
-        "anclora-insights",
         "anclora-linguo-cam",
         "anclora-press",
         "anclora-agent-skills",
@@ -1363,7 +1340,6 @@
         "anclora-groundsync",
         "anclora-portfolio-showcase",
         "anclora-energyscan-showcase",
-        "anclora-syncxml-showcase",
         "anclora-fiscal-showcase",
         "anclora-calculadora-fiscal-183",
         "calculadora-fiscal-183",
